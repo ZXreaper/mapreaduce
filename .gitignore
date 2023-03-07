@@ -1,1 +1,4 @@
 /cmake-build-debug/
+/test/grpc/helloworld/cmake
+/test/grpc/helloworld/cmake_externalproject
+/test/grpc/helloworld/cocoapods
