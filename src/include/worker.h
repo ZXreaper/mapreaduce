@@ -29,19 +29,19 @@ public:
   Task &GetTask();
 
   // worker获得MapTask，交给mapper处理
-  void Mapper(Task& task, std::function<KeyValues(std::string, std::string)> mapf);
+  void Mapper(Task &task);
 
   // worker获得ReduceTask，交给reducer处理
-  void Reducer(Task& task, std::function<std::string(std::string, std::vector<std::string>)> reducef);
+  void Reducer(Task &task);
 
   // 将中间结果写到本地文件
-  std::string WriteToLocalFile(int x, int y, KeyValues& kvs);
+  std::string WriteToLocalFile(int x, int y, KeyValues &kvs);
 
   // 从本地读取中间文件获得map阶段的key values
-  KeyValues& ReadFromLocalFile(std::vector<std::string> files);
+  KeyValues &ReadFromLocalFile(std::vector<std::string> files);
 
   // worker任务完成后通知master。rpc方法
-  void TaskCompleted(Task& task);
+  void TaskCompleted(Task &task);
 
 private:
   std::function<KeyValues(std::string, std::string)> mapf_; // map function

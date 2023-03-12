@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package mrrpc;
+
+service RpcAssignTask {
+  // worker给master发送请求，获取任务
+  rpc AssignTask(AssignTaskRequest) returns (Task) {}
+  // worker向master报告任务已经做完
+  rpc TaskCompleted(Task) returns (TaskCompletedReply) {}
+}
+
+message AssignTaskRequest {
+  bytes assign_arg = 1;
+}
+
+message keyvalue {
+  string key_value_pair = 1;  // 不使用`
+}
+
+// 参照Task类型
+message Task {
+  string inputs = 1;                    // 输入内容
+  string outputs = 2;                   // 输出内容
+  repeated keyvalue intermediates = 3;  // 中间结果，key-value对
+  int32 reducer_no = 4;                 // 使用的worker number
+  int32 task_state = 5;                 // 任务所处阶段: 0-map, 1-reduce, 2-exit, 3-wait
+  int32 task_status = 6;                // 任务当前状态: 0-idle, 1-in_process, 2-completed
+  string start_time = 7;                // 任务开始时间
+}
+
+
+message TaskCompletedReply {
+  string completed_reply = 1; // 不使用
+}
