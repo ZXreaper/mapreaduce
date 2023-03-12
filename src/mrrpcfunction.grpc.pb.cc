@@ -49,43 +49,43 @@ RpcAssignTask::Stub::Stub(
 ::grpc::Status
 RpcAssignTask::Stub::AssignTask(::grpc::ClientContext *context,
                                 const ::mrrpc::AssignTaskRequest &request,
-                                ::mrrpc::Task *response) {
+                                ::mrrpc::RPCTask *response) {
   return ::grpc::internal::BlockingUnaryCall<
-      ::mrrpc::AssignTaskRequest, ::mrrpc::Task, ::grpc::protobuf::MessageLite,
-      ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_AssignTask_,
-                                     context, request, response);
+      ::mrrpc::AssignTaskRequest, ::mrrpc::RPCTask,
+      ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      channel_.get(), rpcmethod_AssignTask_, context, request, response);
 }
 
 void RpcAssignTask::Stub::async::AssignTask(
     ::grpc::ClientContext *context, const ::mrrpc::AssignTaskRequest *request,
-    ::mrrpc::Task *response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall<::mrrpc::AssignTaskRequest, ::mrrpc::Task,
-                                      ::grpc::protobuf::MessageLite,
-                                      ::grpc::protobuf::MessageLite>(
+    ::mrrpc::RPCTask *response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall<
+      ::mrrpc::AssignTaskRequest, ::mrrpc::RPCTask,
+      ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
       stub_->channel_.get(), stub_->rpcmethod_AssignTask_, context, request,
       response, std::move(f));
 }
 
 void RpcAssignTask::Stub::async::AssignTask(
     ::grpc::ClientContext *context, const ::mrrpc::AssignTaskRequest *request,
-    ::mrrpc::Task *response, ::grpc::ClientUnaryReactor *reactor) {
+    ::mrrpc::RPCTask *response, ::grpc::ClientUnaryReactor *reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create<
       ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
       stub_->channel_.get(), stub_->rpcmethod_AssignTask_, context, request,
       response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader<::mrrpc::Task> *
+::grpc::ClientAsyncResponseReader<::mrrpc::RPCTask> *
 RpcAssignTask::Stub::PrepareAsyncAssignTaskRaw(
     ::grpc::ClientContext *context, const ::mrrpc::AssignTaskRequest &request,
     ::grpc::CompletionQueue *cq) {
   return ::grpc::internal::ClientAsyncResponseReaderHelper::Create<
-      ::mrrpc::Task, ::mrrpc::AssignTaskRequest, ::grpc::protobuf::MessageLite,
-      ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_AssignTask_,
-                                     context, request);
+      ::mrrpc::RPCTask, ::mrrpc::AssignTaskRequest,
+      ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      channel_.get(), cq, rpcmethod_AssignTask_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader<::mrrpc::Task> *
+::grpc::ClientAsyncResponseReader<::mrrpc::RPCTask> *
 RpcAssignTask::Stub::AsyncAssignTaskRaw(
     ::grpc::ClientContext *context, const ::mrrpc::AssignTaskRequest &request,
     ::grpc::CompletionQueue *cq) {
@@ -96,27 +96,27 @@ RpcAssignTask::Stub::AsyncAssignTaskRaw(
 
 ::grpc::Status
 RpcAssignTask::Stub::TaskCompleted(::grpc::ClientContext *context,
-                                   const ::mrrpc::Task &request,
+                                   const ::mrrpc::RPCTask &request,
                                    ::mrrpc::TaskCompletedReply *response) {
   return ::grpc::internal::BlockingUnaryCall<
-      ::mrrpc::Task, ::mrrpc::TaskCompletedReply, ::grpc::protobuf::MessageLite,
-      ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_TaskCompleted_,
-                                     context, request, response);
+      ::mrrpc::RPCTask, ::mrrpc::TaskCompletedReply,
+      ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      channel_.get(), rpcmethod_TaskCompleted_, context, request, response);
 }
 
 void RpcAssignTask::Stub::async::TaskCompleted(
-    ::grpc::ClientContext *context, const ::mrrpc::Task *request,
+    ::grpc::ClientContext *context, const ::mrrpc::RPCTask *request,
     ::mrrpc::TaskCompletedReply *response,
     std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall<
-      ::mrrpc::Task, ::mrrpc::TaskCompletedReply, ::grpc::protobuf::MessageLite,
-      ::grpc::protobuf::MessageLite>(stub_->channel_.get(),
-                                     stub_->rpcmethod_TaskCompleted_, context,
-                                     request, response, std::move(f));
+      ::mrrpc::RPCTask, ::mrrpc::TaskCompletedReply,
+      ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      stub_->channel_.get(), stub_->rpcmethod_TaskCompleted_, context, request,
+      response, std::move(f));
 }
 
 void RpcAssignTask::Stub::async::TaskCompleted(
-    ::grpc::ClientContext *context, const ::mrrpc::Task *request,
+    ::grpc::ClientContext *context, const ::mrrpc::RPCTask *request,
     ::mrrpc::TaskCompletedReply *response,
     ::grpc::ClientUnaryReactor *reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create<
@@ -127,17 +127,17 @@ void RpcAssignTask::Stub::async::TaskCompleted(
 
 ::grpc::ClientAsyncResponseReader<::mrrpc::TaskCompletedReply> *
 RpcAssignTask::Stub::PrepareAsyncTaskCompletedRaw(
-    ::grpc::ClientContext *context, const ::mrrpc::Task &request,
+    ::grpc::ClientContext *context, const ::mrrpc::RPCTask &request,
     ::grpc::CompletionQueue *cq) {
   return ::grpc::internal::ClientAsyncResponseReaderHelper::Create<
-      ::mrrpc::TaskCompletedReply, ::mrrpc::Task, ::grpc::protobuf::MessageLite,
-      ::grpc::protobuf::MessageLite>(
+      ::mrrpc::TaskCompletedReply, ::mrrpc::RPCTask,
+      ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
       channel_.get(), cq, rpcmethod_TaskCompleted_, context, request);
 }
 
 ::grpc::ClientAsyncResponseReader<::mrrpc::TaskCompletedReply> *
 RpcAssignTask::Stub::AsyncTaskCompletedRaw(::grpc::ClientContext *context,
-                                           const ::mrrpc::Task &request,
+                                           const ::mrrpc::RPCTask &request,
                                            ::grpc::CompletionQueue *cq) {
   auto *result = this->PrepareAsyncTaskCompletedRaw(context, request, cq);
   result->StartCall();
@@ -148,20 +148,20 @@ RpcAssignTask::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RpcAssignTask_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler<
-          RpcAssignTask::Service, ::mrrpc::AssignTaskRequest, ::mrrpc::Task,
+          RpcAssignTask::Service, ::mrrpc::AssignTaskRequest, ::mrrpc::RPCTask,
           ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](RpcAssignTask::Service *service, ::grpc::ServerContext *ctx,
-             const ::mrrpc::AssignTaskRequest *req, ::mrrpc::Task *resp) {
+             const ::mrrpc::AssignTaskRequest *req, ::mrrpc::RPCTask *resp) {
             return service->AssignTask(ctx, req, resp);
           },
           this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RpcAssignTask_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler<
-          RpcAssignTask::Service, ::mrrpc::Task, ::mrrpc::TaskCompletedReply,
+          RpcAssignTask::Service, ::mrrpc::RPCTask, ::mrrpc::TaskCompletedReply,
           ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](RpcAssignTask::Service *service, ::grpc::ServerContext *ctx,
-             const ::mrrpc::Task *req, ::mrrpc::TaskCompletedReply *resp) {
+             const ::mrrpc::RPCTask *req, ::mrrpc::TaskCompletedReply *resp) {
             return service->TaskCompleted(ctx, req, resp);
           },
           this)));
@@ -172,7 +172,7 @@ RpcAssignTask::Service::~Service() {}
 ::grpc::Status
 RpcAssignTask::Service::AssignTask(::grpc::ServerContext *context,
                                    const ::mrrpc::AssignTaskRequest *request,
-                                   ::mrrpc::Task *response) {
+                                   ::mrrpc::RPCTask *response) {
   (void)context;
   (void)request;
   (void)response;
@@ -181,7 +181,7 @@ RpcAssignTask::Service::AssignTask(::grpc::ServerContext *context,
 
 ::grpc::Status
 RpcAssignTask::Service::TaskCompleted(::grpc::ServerContext *context,
-                                      const ::mrrpc::Task *request,
+                                      const ::mrrpc::RPCTask *request,
                                       ::mrrpc::TaskCompletedReply *response) {
   (void)context;
   (void)request;

@@ -5,6 +5,7 @@
 #ifndef MAPREDUCE_MASTER_H
 #define MAPREDUCE_MASTER_H
 
+#include "rpc.h"
 #include <memory>
 #include <mutex>
 #include <queue>
@@ -17,6 +18,7 @@ enum TASK_STATUS { IDLE, IN_PROGRESS, Completed };
 // 任务类型
 class Task {
 public:
+  Task() {}
   Task(std::string input, int nreducer, STATE taskstate, TASK_STATUS taskstatus)
       : Input_(input), NReducer_(nreducer), TaskState_(taskstate),
         TaskStatus_(taskstatus) {}

@@ -10,7 +10,10 @@ int main(int argc, char **argv) {
     exit(EXIT_FAILURE);
   }
 
-  Worker worker;
+  std::string target_str = "127.0.0.1:50051";
+
+  Worker worker(
+      grpc::CreateChannel(target_str, grpc::InsecureChannelCredentials()));
 
   // 获取map和reduce方法
   worker.LoadPlugin(std::string(argv[1]));

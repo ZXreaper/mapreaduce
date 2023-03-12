@@ -36,64 +36,64 @@ class RpcAssignTask final {
    public:
     virtual ~StubInterface() {}
     // worker给master发送请求，获取任务
-    virtual ::grpc::Status AssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::mrrpc::Task* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::Task>> AsyncAssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::Task>>(AsyncAssignTaskRaw(context, request, cq));
+    virtual ::grpc::Status AssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::mrrpc::RPCTask* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::RPCTask>> AsyncAssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::RPCTask>>(AsyncAssignTaskRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::Task>> PrepareAsyncAssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::Task>>(PrepareAsyncAssignTaskRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::RPCTask>> PrepareAsyncAssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::RPCTask>>(PrepareAsyncAssignTaskRaw(context, request, cq));
     }
     // worker向master报告任务已经做完
-    virtual ::grpc::Status TaskCompleted(::grpc::ClientContext* context, const ::mrrpc::Task& request, ::mrrpc::TaskCompletedReply* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::TaskCompletedReply>> AsyncTaskCompleted(::grpc::ClientContext* context, const ::mrrpc::Task& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status TaskCompleted(::grpc::ClientContext* context, const ::mrrpc::RPCTask& request, ::mrrpc::TaskCompletedReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::TaskCompletedReply>> AsyncTaskCompleted(::grpc::ClientContext* context, const ::mrrpc::RPCTask& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::TaskCompletedReply>>(AsyncTaskCompletedRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::TaskCompletedReply>> PrepareAsyncTaskCompleted(::grpc::ClientContext* context, const ::mrrpc::Task& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::TaskCompletedReply>> PrepareAsyncTaskCompleted(::grpc::ClientContext* context, const ::mrrpc::RPCTask& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::TaskCompletedReply>>(PrepareAsyncTaskCompletedRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
       // worker给master发送请求，获取任务
-      virtual void AssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest* request, ::mrrpc::Task* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void AssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest* request, ::mrrpc::Task* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void AssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest* request, ::mrrpc::RPCTask* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void AssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest* request, ::mrrpc::RPCTask* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       // worker向master报告任务已经做完
-      virtual void TaskCompleted(::grpc::ClientContext* context, const ::mrrpc::Task* request, ::mrrpc::TaskCompletedReply* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void TaskCompleted(::grpc::ClientContext* context, const ::mrrpc::Task* request, ::mrrpc::TaskCompletedReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void TaskCompleted(::grpc::ClientContext* context, const ::mrrpc::RPCTask* request, ::mrrpc::TaskCompletedReply* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void TaskCompleted(::grpc::ClientContext* context, const ::mrrpc::RPCTask* request, ::mrrpc::TaskCompletedReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::Task>* AsyncAssignTaskRaw(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::Task>* PrepareAsyncAssignTaskRaw(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::TaskCompletedReply>* AsyncTaskCompletedRaw(::grpc::ClientContext* context, const ::mrrpc::Task& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::TaskCompletedReply>* PrepareAsyncTaskCompletedRaw(::grpc::ClientContext* context, const ::mrrpc::Task& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::RPCTask>* AsyncAssignTaskRaw(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::RPCTask>* PrepareAsyncAssignTaskRaw(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::TaskCompletedReply>* AsyncTaskCompletedRaw(::grpc::ClientContext* context, const ::mrrpc::RPCTask& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mrrpc::TaskCompletedReply>* PrepareAsyncTaskCompletedRaw(::grpc::ClientContext* context, const ::mrrpc::RPCTask& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status AssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::mrrpc::Task* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::Task>> AsyncAssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::Task>>(AsyncAssignTaskRaw(context, request, cq));
+    ::grpc::Status AssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::mrrpc::RPCTask* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::RPCTask>> AsyncAssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::RPCTask>>(AsyncAssignTaskRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::Task>> PrepareAsyncAssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::Task>>(PrepareAsyncAssignTaskRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::RPCTask>> PrepareAsyncAssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::RPCTask>>(PrepareAsyncAssignTaskRaw(context, request, cq));
     }
-    ::grpc::Status TaskCompleted(::grpc::ClientContext* context, const ::mrrpc::Task& request, ::mrrpc::TaskCompletedReply* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::TaskCompletedReply>> AsyncTaskCompleted(::grpc::ClientContext* context, const ::mrrpc::Task& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status TaskCompleted(::grpc::ClientContext* context, const ::mrrpc::RPCTask& request, ::mrrpc::TaskCompletedReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::TaskCompletedReply>> AsyncTaskCompleted(::grpc::ClientContext* context, const ::mrrpc::RPCTask& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::TaskCompletedReply>>(AsyncTaskCompletedRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::TaskCompletedReply>> PrepareAsyncTaskCompleted(::grpc::ClientContext* context, const ::mrrpc::Task& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::TaskCompletedReply>> PrepareAsyncTaskCompleted(::grpc::ClientContext* context, const ::mrrpc::RPCTask& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mrrpc::TaskCompletedReply>>(PrepareAsyncTaskCompletedRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void AssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest* request, ::mrrpc::Task* response, std::function<void(::grpc::Status)>) override;
-      void AssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest* request, ::mrrpc::Task* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void TaskCompleted(::grpc::ClientContext* context, const ::mrrpc::Task* request, ::mrrpc::TaskCompletedReply* response, std::function<void(::grpc::Status)>) override;
-      void TaskCompleted(::grpc::ClientContext* context, const ::mrrpc::Task* request, ::mrrpc::TaskCompletedReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void AssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest* request, ::mrrpc::RPCTask* response, std::function<void(::grpc::Status)>) override;
+      void AssignTask(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest* request, ::mrrpc::RPCTask* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void TaskCompleted(::grpc::ClientContext* context, const ::mrrpc::RPCTask* request, ::mrrpc::TaskCompletedReply* response, std::function<void(::grpc::Status)>) override;
+      void TaskCompleted(::grpc::ClientContext* context, const ::mrrpc::RPCTask* request, ::mrrpc::TaskCompletedReply* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -105,10 +105,10 @@ class RpcAssignTask final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::mrrpc::Task>* AsyncAssignTaskRaw(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mrrpc::Task>* PrepareAsyncAssignTaskRaw(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mrrpc::TaskCompletedReply>* AsyncTaskCompletedRaw(::grpc::ClientContext* context, const ::mrrpc::Task& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mrrpc::TaskCompletedReply>* PrepareAsyncTaskCompletedRaw(::grpc::ClientContext* context, const ::mrrpc::Task& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mrrpc::RPCTask>* AsyncAssignTaskRaw(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mrrpc::RPCTask>* PrepareAsyncAssignTaskRaw(::grpc::ClientContext* context, const ::mrrpc::AssignTaskRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mrrpc::TaskCompletedReply>* AsyncTaskCompletedRaw(::grpc::ClientContext* context, const ::mrrpc::RPCTask& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mrrpc::TaskCompletedReply>* PrepareAsyncTaskCompletedRaw(::grpc::ClientContext* context, const ::mrrpc::RPCTask& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_AssignTask_;
     const ::grpc::internal::RpcMethod rpcmethod_TaskCompleted_;
   };
@@ -119,9 +119,9 @@ class RpcAssignTask final {
     Service();
     virtual ~Service();
     // worker给master发送请求，获取任务
-    virtual ::grpc::Status AssignTask(::grpc::ServerContext* context, const ::mrrpc::AssignTaskRequest* request, ::mrrpc::Task* response);
+    virtual ::grpc::Status AssignTask(::grpc::ServerContext* context, const ::mrrpc::AssignTaskRequest* request, ::mrrpc::RPCTask* response);
     // worker向master报告任务已经做完
-    virtual ::grpc::Status TaskCompleted(::grpc::ServerContext* context, const ::mrrpc::Task* request, ::mrrpc::TaskCompletedReply* response);
+    virtual ::grpc::Status TaskCompleted(::grpc::ServerContext* context, const ::mrrpc::RPCTask* request, ::mrrpc::TaskCompletedReply* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_AssignTask : public BaseClass {
@@ -135,11 +135,11 @@ class RpcAssignTask final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AssignTask(::grpc::ServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::Task* /*response*/) override {
+    ::grpc::Status AssignTask(::grpc::ServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::RPCTask* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestAssignTask(::grpc::ServerContext* context, ::mrrpc::AssignTaskRequest* request, ::grpc::ServerAsyncResponseWriter< ::mrrpc::Task>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestAssignTask(::grpc::ServerContext* context, ::mrrpc::AssignTaskRequest* request, ::grpc::ServerAsyncResponseWriter< ::mrrpc::RPCTask>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -155,11 +155,11 @@ class RpcAssignTask final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TaskCompleted(::grpc::ServerContext* /*context*/, const ::mrrpc::Task* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/) override {
+    ::grpc::Status TaskCompleted(::grpc::ServerContext* /*context*/, const ::mrrpc::RPCTask* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestTaskCompleted(::grpc::ServerContext* context, ::mrrpc::Task* request, ::grpc::ServerAsyncResponseWriter< ::mrrpc::TaskCompletedReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestTaskCompleted(::grpc::ServerContext* context, ::mrrpc::RPCTask* request, ::grpc::ServerAsyncResponseWriter< ::mrrpc::TaskCompletedReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -171,25 +171,25 @@ class RpcAssignTask final {
    public:
     WithCallbackMethod_AssignTask() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::mrrpc::AssignTaskRequest, ::mrrpc::Task>(
+          new ::grpc::internal::CallbackUnaryHandler< ::mrrpc::AssignTaskRequest, ::mrrpc::RPCTask>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::mrrpc::AssignTaskRequest* request, ::mrrpc::Task* response) { return this->AssignTask(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::mrrpc::AssignTaskRequest* request, ::mrrpc::RPCTask* response) { return this->AssignTask(context, request, response); }));}
     void SetMessageAllocatorFor_AssignTask(
-        ::grpc::MessageAllocator< ::mrrpc::AssignTaskRequest, ::mrrpc::Task>* allocator) {
+        ::grpc::MessageAllocator< ::mrrpc::AssignTaskRequest, ::mrrpc::RPCTask>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::mrrpc::AssignTaskRequest, ::mrrpc::Task>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::mrrpc::AssignTaskRequest, ::mrrpc::RPCTask>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_AssignTask() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AssignTask(::grpc::ServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::Task* /*response*/) override {
+    ::grpc::Status AssignTask(::grpc::ServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::RPCTask* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* AssignTask(
-      ::grpc::CallbackServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::Task* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::RPCTask* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_TaskCompleted : public BaseClass {
@@ -198,25 +198,25 @@ class RpcAssignTask final {
    public:
     WithCallbackMethod_TaskCompleted() {
       ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::mrrpc::Task, ::mrrpc::TaskCompletedReply>(
+          new ::grpc::internal::CallbackUnaryHandler< ::mrrpc::RPCTask, ::mrrpc::TaskCompletedReply>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::mrrpc::Task* request, ::mrrpc::TaskCompletedReply* response) { return this->TaskCompleted(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::mrrpc::RPCTask* request, ::mrrpc::TaskCompletedReply* response) { return this->TaskCompleted(context, request, response); }));}
     void SetMessageAllocatorFor_TaskCompleted(
-        ::grpc::MessageAllocator< ::mrrpc::Task, ::mrrpc::TaskCompletedReply>* allocator) {
+        ::grpc::MessageAllocator< ::mrrpc::RPCTask, ::mrrpc::TaskCompletedReply>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::mrrpc::Task, ::mrrpc::TaskCompletedReply>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::mrrpc::RPCTask, ::mrrpc::TaskCompletedReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_TaskCompleted() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TaskCompleted(::grpc::ServerContext* /*context*/, const ::mrrpc::Task* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/) override {
+    ::grpc::Status TaskCompleted(::grpc::ServerContext* /*context*/, const ::mrrpc::RPCTask* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* TaskCompleted(
-      ::grpc::CallbackServerContext* /*context*/, const ::mrrpc::Task* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::mrrpc::RPCTask* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/)  { return nullptr; }
   };
   typedef WithCallbackMethod_AssignTask<WithCallbackMethod_TaskCompleted<Service > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
@@ -232,7 +232,7 @@ class RpcAssignTask final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AssignTask(::grpc::ServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::Task* /*response*/) override {
+    ::grpc::Status AssignTask(::grpc::ServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::RPCTask* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -249,7 +249,7 @@ class RpcAssignTask final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TaskCompleted(::grpc::ServerContext* /*context*/, const ::mrrpc::Task* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/) override {
+    ::grpc::Status TaskCompleted(::grpc::ServerContext* /*context*/, const ::mrrpc::RPCTask* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -266,7 +266,7 @@ class RpcAssignTask final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AssignTask(::grpc::ServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::Task* /*response*/) override {
+    ::grpc::Status AssignTask(::grpc::ServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::RPCTask* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -286,7 +286,7 @@ class RpcAssignTask final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TaskCompleted(::grpc::ServerContext* /*context*/, const ::mrrpc::Task* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/) override {
+    ::grpc::Status TaskCompleted(::grpc::ServerContext* /*context*/, const ::mrrpc::RPCTask* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -309,7 +309,7 @@ class RpcAssignTask final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AssignTask(::grpc::ServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::Task* /*response*/) override {
+    ::grpc::Status AssignTask(::grpc::ServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::RPCTask* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -331,7 +331,7 @@ class RpcAssignTask final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TaskCompleted(::grpc::ServerContext* /*context*/, const ::mrrpc::Task* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/) override {
+    ::grpc::Status TaskCompleted(::grpc::ServerContext* /*context*/, const ::mrrpc::RPCTask* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -346,10 +346,10 @@ class RpcAssignTask final {
     WithStreamedUnaryMethod_AssignTask() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::mrrpc::AssignTaskRequest, ::mrrpc::Task>(
+          ::mrrpc::AssignTaskRequest, ::mrrpc::RPCTask>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::mrrpc::AssignTaskRequest, ::mrrpc::Task>* streamer) {
+                     ::mrrpc::AssignTaskRequest, ::mrrpc::RPCTask>* streamer) {
                        return this->StreamedAssignTask(context,
                          streamer);
                   }));
@@ -358,12 +358,12 @@ class RpcAssignTask final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status AssignTask(::grpc::ServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::Task* /*response*/) override {
+    ::grpc::Status AssignTask(::grpc::ServerContext* /*context*/, const ::mrrpc::AssignTaskRequest* /*request*/, ::mrrpc::RPCTask* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedAssignTask(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mrrpc::AssignTaskRequest,::mrrpc::Task>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedAssignTask(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mrrpc::AssignTaskRequest,::mrrpc::RPCTask>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_TaskCompleted : public BaseClass {
@@ -373,10 +373,10 @@ class RpcAssignTask final {
     WithStreamedUnaryMethod_TaskCompleted() {
       ::grpc::Service::MarkMethodStreamed(1,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::mrrpc::Task, ::mrrpc::TaskCompletedReply>(
+          ::mrrpc::RPCTask, ::mrrpc::TaskCompletedReply>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::mrrpc::Task, ::mrrpc::TaskCompletedReply>* streamer) {
+                     ::mrrpc::RPCTask, ::mrrpc::TaskCompletedReply>* streamer) {
                        return this->StreamedTaskCompleted(context,
                          streamer);
                   }));
@@ -385,12 +385,12 @@ class RpcAssignTask final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status TaskCompleted(::grpc::ServerContext* /*context*/, const ::mrrpc::Task* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/) override {
+    ::grpc::Status TaskCompleted(::grpc::ServerContext* /*context*/, const ::mrrpc::RPCTask* /*request*/, ::mrrpc::TaskCompletedReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedTaskCompleted(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mrrpc::Task,::mrrpc::TaskCompletedReply>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedTaskCompleted(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mrrpc::RPCTask,::mrrpc::TaskCompletedReply>* server_unary_streamer) = 0;
   };
   typedef WithStreamedUnaryMethod_AssignTask<WithStreamedUnaryMethod_TaskCompleted<Service > > StreamedUnaryService;
   typedef Service SplitStreamedService;

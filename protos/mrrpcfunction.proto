@@ -4,9 +4,9 @@ package mrrpc;
 
 service RpcAssignTask {
   // worker给master发送请求，获取任务
-  rpc AssignTask(AssignTaskRequest) returns (Task) {}
+  rpc AssignTask(AssignTaskRequest) returns (RPCTask) {}
   // worker向master报告任务已经做完
-  rpc TaskCompleted(Task) returns (TaskCompletedReply) {}
+  rpc TaskCompleted(RPCTask) returns (TaskCompletedReply) {}
 }
 
 message AssignTaskRequest {
@@ -18,7 +18,7 @@ message keyvalue {
 }
 
 // 参照Task类型
-message Task {
+message RPCTask {
   string inputs = 1;                    // 输入内容
   string outputs = 2;                   // 输出内容
   repeated keyvalue intermediates = 3;  // 中间结果，key-value对

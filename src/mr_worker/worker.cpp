@@ -35,7 +35,51 @@ void Worker::StartWorker() {
 }
 
 // 获得任务。rpc方法
-Task &Worker::GetTask() {}
+Task Worker::GetTask() {
+  mrrpc::AssignTaskRequest args;
+  mrrpc::RPCTask reply;
+  args.set_assign_arg(1); // no use
+  ClientContext context;
+  Status status = stub_->AssignTask(&context, args, &reply);
+
+  if (status.ok()) {
+    std::string inputs = *reply.mutable_inputs();
+    int reduce_no = reply.reducer_no();
+    STATE state;
+    switch (reply.task_state()) {
+    case 0:
+      state = MAP;
+      break;
+    case 1:
+      state = REDUCE;
+      break;
+    case 2:
+      state = EXIT;
+      break;
+    case 3:
+      state = WAIT;
+      break;
+    }
+    TASK_STATUS task_status;
+    switch (reply.task_status()) {
+    case 0:
+      task_status = IDLE;
+      break;
+    case 1:
+      task_status = IN_PROGRESS;
+      break;
+    case 2:
+      task_status = Completed;
+      break;
+    }
+    Task task = Task(inputs, reduce_no, state, task_status);
+    return task;
+  } else {
+    std::cout << status.error_code() << ": " << status.error_message()
+              << std::endl;
+    return Task{};
+  }
+}
 
 // worker获得MapTask，交给mapper处理
 void Worker::Mapper(Task &task) {}

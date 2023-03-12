@@ -6,9 +6,16 @@
 #define MAPREDUCE_WORKER_H
 
 #include "master.h"
+#include "mrrpcfunction.grpc.pb.h"
 #include <functional>
+#include <grpcpp/grpcpp.h>
 #include <string>
 #include <vector>
+
+using mrrpc;
+using grpc::Channel;
+using grpc::ClientContext;
+using grpc::Status;
 
 struct KeyValue {
   std::string Key;
@@ -19,6 +26,8 @@ typedef std::vector<KeyValue> KeyValues;
 
 class Worker {
 public:
+  Worker(std::shared_ptr<Channel> channel)
+      : stub_(mrrpc::RpcAssignTask::NewStub(channel)) {}
   // 加载map function 和 reduce function
   void LoadPlugin(std::string filename);
 
@@ -26,7 +35,7 @@ public:
   void StartWorker();
 
   // 获得任务。rpc方法
-  Task &GetTask();
+  Task GetTask();
 
   // worker获得MapTask，交给mapper处理
   void Mapper(Task &task);
@@ -47,6 +56,7 @@ private:
   std::function<KeyValues(std::string, std::string)> mapf_; // map function
   std::function<std::string(std::string, std::vector<std::string>)>
       reducef_; // reduce function
+  std::unique_ptr<mrrpc::RpcAssignTask::Stub> stub_;
 };
 
 #endif // MAPREDUCE_WORKER_H
