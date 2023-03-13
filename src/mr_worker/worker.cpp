@@ -43,8 +43,8 @@ Task Worker::GetTask() {
   Status status = stub_->AssignTask(&context, args, &reply);
 
   if (status.ok()) {
-    std::string inputs = *reply.mutable_inputs();
-    int reduce_no = reply.reducer_no();
+    std::string inputs = *(reply.mutable_inputs());
+    int task_no = reply.task_no();
     STATE state;
     switch (reply.task_state()) {
     case 0:
@@ -60,19 +60,8 @@ Task Worker::GetTask() {
       state = WAIT;
       break;
     }
-    TASK_STATUS task_status;
-    switch (reply.task_status()) {
-    case 0:
-      task_status = IDLE;
-      break;
-    case 1:
-      task_status = IN_PROGRESS;
-      break;
-    case 2:
-      task_status = Completed;
-      break;
-    }
-    Task task = Task(inputs, reduce_no, state, task_status);
+    int nreduce = reply.nreducer();
+    Task task = Task(inputs, nreduce, task_no, state);
     return task;
   } else {
     std::cout << status.error_code() << ": " << status.error_message()
@@ -94,4 +83,13 @@ std::string Worker::WriteToLocalFile(int x, int y, KeyValues &kvs) {}
 KeyValues &Worker::ReadFromLocalFile(std::vector<std::string> files) {}
 
 // worker任务完成后通知master。rpc方法
-void Worker::TaskCompleted(Task &task) {}
+void Worker::TaskCompleted(Task &task) {
+  mrrpc::RPCTask args;
+  mrrpc::TaskCompletedReply reply;
+  args.set_inputs(task.Input_);
+  args.set_outputs(task.Output_);
+  // TODO: 为protobuf中的repeated类型进行赋值
+
+  ClientContext context;
+  Status status = stub_->TaskCompleted(&context, args, &reply);
+}

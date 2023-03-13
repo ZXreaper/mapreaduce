@@ -504,10 +504,9 @@ class RPCTask final :
     kIntermediatesFieldNumber = 3,
     kInputsFieldNumber = 1,
     kOutputsFieldNumber = 2,
-    kStartTimeFieldNumber = 7,
-    kReducerNoFieldNumber = 4,
-    kTaskStateFieldNumber = 5,
-    kTaskStatusFieldNumber = 6,
+    kNreducerFieldNumber = 4,
+    kTaskNoFieldNumber = 5,
+    kTaskStateFieldNumber = 6,
   };
   // repeated .mrrpc.keyvalue intermediates = 3;
   int intermediates_size() const;
@@ -555,45 +554,31 @@ class RPCTask final :
   std::string* _internal_mutable_outputs();
   public:
 
-  // string start_time = 7;
-  void clear_start_time();
-  const std::string& start_time() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_start_time(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_start_time();
-  PROTOBUF_NODISCARD std::string* release_start_time();
-  void set_allocated_start_time(std::string* start_time);
+  // int32 nreducer = 4;
+  void clear_nreducer();
+  int32_t nreducer() const;
+  void set_nreducer(int32_t value);
   private:
-  const std::string& _internal_start_time() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_start_time(const std::string& value);
-  std::string* _internal_mutable_start_time();
+  int32_t _internal_nreducer() const;
+  void _internal_set_nreducer(int32_t value);
   public:
 
-  // int32 reducer_no = 4;
-  void clear_reducer_no();
-  int32_t reducer_no() const;
-  void set_reducer_no(int32_t value);
+  // int32 task_no = 5;
+  void clear_task_no();
+  int32_t task_no() const;
+  void set_task_no(int32_t value);
   private:
-  int32_t _internal_reducer_no() const;
-  void _internal_set_reducer_no(int32_t value);
+  int32_t _internal_task_no() const;
+  void _internal_set_task_no(int32_t value);
   public:
 
-  // int32 task_state = 5;
+  // int32 task_state = 6;
   void clear_task_state();
   int32_t task_state() const;
   void set_task_state(int32_t value);
   private:
   int32_t _internal_task_state() const;
   void _internal_set_task_state(int32_t value);
-  public:
-
-  // int32 task_status = 6;
-  void clear_task_status();
-  int32_t task_status() const;
-  void set_task_status(int32_t value);
-  private:
-  int32_t _internal_task_status() const;
-  void _internal_set_task_status(int32_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:mrrpc.RPCTask)
@@ -606,10 +591,9 @@ class RPCTask final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::mrrpc::keyvalue > intermediates_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr inputs_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr outputs_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr start_time_;
-  int32_t reducer_no_;
+  int32_t nreducer_;
+  int32_t task_no_;
   int32_t task_state_;
-  int32_t task_status_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_mrrpcfunction_2eproto;
 };
@@ -1027,27 +1011,47 @@ RPCTask::intermediates() const {
   return intermediates_;
 }
 
-// int32 reducer_no = 4;
-inline void RPCTask::clear_reducer_no() {
-  reducer_no_ = 0;
+// int32 nreducer = 4;
+inline void RPCTask::clear_nreducer() {
+  nreducer_ = 0;
 }
-inline int32_t RPCTask::_internal_reducer_no() const {
-  return reducer_no_;
+inline int32_t RPCTask::_internal_nreducer() const {
+  return nreducer_;
 }
-inline int32_t RPCTask::reducer_no() const {
-  // @@protoc_insertion_point(field_get:mrrpc.RPCTask.reducer_no)
-  return _internal_reducer_no();
+inline int32_t RPCTask::nreducer() const {
+  // @@protoc_insertion_point(field_get:mrrpc.RPCTask.nreducer)
+  return _internal_nreducer();
 }
-inline void RPCTask::_internal_set_reducer_no(int32_t value) {
+inline void RPCTask::_internal_set_nreducer(int32_t value) {
   
-  reducer_no_ = value;
+  nreducer_ = value;
 }
-inline void RPCTask::set_reducer_no(int32_t value) {
-  _internal_set_reducer_no(value);
-  // @@protoc_insertion_point(field_set:mrrpc.RPCTask.reducer_no)
+inline void RPCTask::set_nreducer(int32_t value) {
+  _internal_set_nreducer(value);
+  // @@protoc_insertion_point(field_set:mrrpc.RPCTask.nreducer)
 }
 
-// int32 task_state = 5;
+// int32 task_no = 5;
+inline void RPCTask::clear_task_no() {
+  task_no_ = 0;
+}
+inline int32_t RPCTask::_internal_task_no() const {
+  return task_no_;
+}
+inline int32_t RPCTask::task_no() const {
+  // @@protoc_insertion_point(field_get:mrrpc.RPCTask.task_no)
+  return _internal_task_no();
+}
+inline void RPCTask::_internal_set_task_no(int32_t value) {
+  
+  task_no_ = value;
+}
+inline void RPCTask::set_task_no(int32_t value) {
+  _internal_set_task_no(value);
+  // @@protoc_insertion_point(field_set:mrrpc.RPCTask.task_no)
+}
+
+// int32 task_state = 6;
 inline void RPCTask::clear_task_state() {
   task_state_ = 0;
 }
@@ -1065,77 +1069,6 @@ inline void RPCTask::_internal_set_task_state(int32_t value) {
 inline void RPCTask::set_task_state(int32_t value) {
   _internal_set_task_state(value);
   // @@protoc_insertion_point(field_set:mrrpc.RPCTask.task_state)
-}
-
-// int32 task_status = 6;
-inline void RPCTask::clear_task_status() {
-  task_status_ = 0;
-}
-inline int32_t RPCTask::_internal_task_status() const {
-  return task_status_;
-}
-inline int32_t RPCTask::task_status() const {
-  // @@protoc_insertion_point(field_get:mrrpc.RPCTask.task_status)
-  return _internal_task_status();
-}
-inline void RPCTask::_internal_set_task_status(int32_t value) {
-  
-  task_status_ = value;
-}
-inline void RPCTask::set_task_status(int32_t value) {
-  _internal_set_task_status(value);
-  // @@protoc_insertion_point(field_set:mrrpc.RPCTask.task_status)
-}
-
-// string start_time = 7;
-inline void RPCTask::clear_start_time() {
-  start_time_.ClearToEmpty();
-}
-inline const std::string& RPCTask::start_time() const {
-  // @@protoc_insertion_point(field_get:mrrpc.RPCTask.start_time)
-  return _internal_start_time();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void RPCTask::set_start_time(ArgT0&& arg0, ArgT... args) {
- 
- start_time_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:mrrpc.RPCTask.start_time)
-}
-inline std::string* RPCTask::mutable_start_time() {
-  std::string* _s = _internal_mutable_start_time();
-  // @@protoc_insertion_point(field_mutable:mrrpc.RPCTask.start_time)
-  return _s;
-}
-inline const std::string& RPCTask::_internal_start_time() const {
-  return start_time_.Get();
-}
-inline void RPCTask::_internal_set_start_time(const std::string& value) {
-  
-  start_time_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* RPCTask::_internal_mutable_start_time() {
-  
-  return start_time_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* RPCTask::release_start_time() {
-  // @@protoc_insertion_point(field_release:mrrpc.RPCTask.start_time)
-  return start_time_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void RPCTask::set_allocated_start_time(std::string* start_time) {
-  if (start_time != nullptr) {
-    
-  } else {
-    
-  }
-  start_time_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), start_time,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (start_time_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    start_time_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:mrrpc.RPCTask.start_time)
 }
 
 // -------------------------------------------------------------------

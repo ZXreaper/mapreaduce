@@ -1,4 +1,7 @@
 #include "master.h"
+#include "rpc.h"
+#include <ctime>
+#include <mutex>
 #include <thread>
 
 Master::Master(STATE MasterPhrase, int nreduce,
@@ -29,10 +32,53 @@ std::shared_ptr<Master> Master::MakeMaster(std::vector<std::string> files,
 }
 
 // rpc方法，Master给worker分配任务
-bool Master::AssignTask() {}
+bool Master::AssignTask(::mrrpc::RPCTask *response) {
+  mtx_.lock();
+  if (!Task_que_.empty()) {
+    std::shared_ptr<Task> cur_task = Task_que_.front();
+    Task_que_.pop();
+    response->set_inputs(cur_task->Input_);
+    response->set_nreducer(cur_task->NReducer_);
+    response->set_task_state(cur_task->TaskState_);
+    response->set_task_no(cur_task->TaskNumber_);
+    TaskMeta_[cur_task->TaskNumber_]->TaskStatus_ = IN_PROGRESS;
+    TaskMeta_[cur_task->TaskNumber_]->StartTime_ = time(0);
+  } else if (MasterPhrase_ == EXIT) {
+    response->set_task_state(EXIT);
+  } else {
+    response->set_task_state(WAIT);
+  }
+  mtx_.unlock();
+  return true;
+}
 
-// Master启动：开启rpc监听
-bool Master::StartServer() {}
+// Master启动：开启rpc监听，server->Wait()会阻塞住，因此我们要开启一个线程来做监听
+bool Master::StartServer() {
+  std::thread rpc_server([&]() {
+    std::string server_address("127.0.0.1:50051");
+    RpcServiceImpl service;
+    service.SetMaster(this);
+
+    grpc::EnableDefaultHealthCheckService(true);
+    grpc::reflection::InitProtoReflectionServerBuilderPlugin();
+    ServerBuilder builder;
+    // Listen on the given address without any authentication mechanism.
+    builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
+    // Register "service" as the instance through which we'll communicate with
+    // clients. In this case it corresponds to an *synchronous* service.
+    builder.RegisterService(&service);
+    // Finally assemble the server.
+    std::unique_ptr<Server> server(builder.BuildAndStart());
+    std::cout << "Server listening on " << server_address << std::endl;
+
+    // Wait for the server to shutdown. Note that some other thread must be
+    // responsible for shutting down the server for this call to ever return.
+    // Block until the server shuts down.
+    server->Wait();
+  });
+
+  rpc_server.detach();
+}
 
 // Map过程
 bool Master::createMapTask() {
@@ -40,8 +86,12 @@ bool Master::createMapTask() {
   int len = InputFiles_.size();
   // map任务加入队列阶段应该不需要互斥锁
   for (int idx = 0; idx < len; idx++) {
-    Task_que_.push(
-        std::make_shared<Task>(Task(InputFiles_[idx], idx, MAP, IDLE)));
+    std::shared_ptr<Task> m(new Task(InputFiles_[idx], NReduce_, idx, MAP));
+    Task_que_.push(m);
+    std::shared_ptr<MasterTask> mt(new MasterTask());
+    mt->TaskStatus_ = IDLE;
+    mt->TaskRef_ = m;
+    TaskMeta_[idx] = mt;
   }
 }
 
@@ -50,6 +100,9 @@ bool Master::createReduceTask() {}
 
 // 判断任务是否完全结束
 bool Master::Done() {}
+
+// worker任务完成后通知master。rpc方法
+void Master::TaskCompleted(::mrrpc::RPCTask *request) {}
 
 // 超时任务判断
 bool Master::CatchTimeOut() {

@@ -22,10 +22,9 @@ message RPCTask {
   string inputs = 1;                    // 输入内容
   string outputs = 2;                   // 输出内容
   repeated keyvalue intermediates = 3;  // 中间结果，key-value对
-  int32 reducer_no = 4;                 // 使用的worker number
-  int32 task_state = 5;                 // 任务所处阶段: 0-map, 1-reduce, 2-exit, 3-wait
-  int32 task_status = 6;                // 任务当前状态: 0-idle, 1-in_process, 2-completed
-  string start_time = 7;                // 任务开始时间
+  int32 nreducer = 4;                   // 总共的reducer数量
+  int32 task_no = 5;                    // 任务编号
+  int32 task_state = 6;                 // 任务所处阶段: 0-map, 1-reduce, 2-exit, 3-wait
 }
 
 
