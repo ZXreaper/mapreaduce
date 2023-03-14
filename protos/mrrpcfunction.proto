@@ -10,11 +10,11 @@ service RpcAssignTask {
 }
 
 message AssignTaskRequest {
-  bytes assign_arg = 1;
+  bytes assign_arg = 1;   // 不使用
 }
 
 message keyvalue {
-  string key_value_pair = 1;  // 不使用`
+  string key_value_pair = 1;
 }
 
 // 参照Task类型

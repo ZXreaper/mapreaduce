@@ -15,7 +15,11 @@ Status RpcServiceImpl::AssignTask(ServerContext *context,
 // worker向master报告任务已经做完
 Status RpcServiceImpl::TaskCompleted(ServerContext *context,
                                      const ::mrrpc::RPCTask *request,
-                                     ::mrrpc::TaskCompletedReply *response) {}
+                                     ::mrrpc::TaskCompletedReply *response) {
+  m_->TaskCompleted(request);
+  m_->ProcessTaskResult(request);
+  return Status::OK;
+}
 
 // 将rpc server绑定到对应的master上
 void RpcServiceImpl::SetMaster(Master *m) { m_ = m; }

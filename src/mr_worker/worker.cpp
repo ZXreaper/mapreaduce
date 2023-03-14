@@ -88,8 +88,10 @@ void Worker::TaskCompleted(Task &task) {
   mrrpc::TaskCompletedReply reply;
   args.set_inputs(task.Input_);
   args.set_outputs(task.Output_);
-  // TODO: 为protobuf中的repeated类型进行赋值
-
+  int intermediates_size = args.intermediates_size();
+  for (int i = 0; i < intermediates_size; i++) {
+    args.mutable_intermediates(i)->AppendToString(&task.Intermediates_[i]);
+  }
   ClientContext context;
   Status status = stub_->TaskCompleted(&context, args, &reply);
 }

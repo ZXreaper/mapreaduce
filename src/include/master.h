@@ -60,7 +60,13 @@ public:
   bool Done();
 
   // worker任务完成后通知master。rpc方法
-  void TaskCompleted(::mrrpc::RPCTask *request);
+  bool TaskCompleted(const ::mrrpc::RPCTask *request);
+
+  // 任务结束后调用
+  void ProcessTaskResult(const ::mrrpc::RPCTask *request);
+
+  // 判断任务是否都已完成
+  bool AllTaskDone();
 
   // 超时任务判断
   bool CatchTimeOut();

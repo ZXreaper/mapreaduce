@@ -3,11 +3,16 @@
 #include <ctime>
 #include <mutex>
 #include <thread>
+#include <vector>
 
 Master::Master(STATE MasterPhrase, int nreduce,
                std::vector<std::string> inputfiles)
     : MasterPhrase_(MAP), NReduce_(nreduce) {
   InputFiles_ = inputfiles;
+  int files_cnt = inputfiles.size();
+  for (int i = 0; i < files_cnt; i++) {
+    Intermediates_[i] = std::vector<std::string>();
+  }
 }
 
 // 创建Master。整个流程的开始
@@ -33,7 +38,7 @@ std::shared_ptr<Master> Master::MakeMaster(std::vector<std::string> files,
 
 // rpc方法，Master给worker分配任务
 bool Master::AssignTask(::mrrpc::RPCTask *response) {
-  mtx_.lock();
+  std::lock_guard<std::mutex> g(mtx_);
   if (!Task_que_.empty()) {
     std::shared_ptr<Task> cur_task = Task_que_.front();
     Task_que_.pop();
@@ -48,7 +53,6 @@ bool Master::AssignTask(::mrrpc::RPCTask *response) {
   } else {
     response->set_task_state(WAIT);
   }
-  mtx_.unlock();
   return true;
 }
 
@@ -99,10 +103,68 @@ bool Master::createMapTask() {
 bool Master::createReduceTask() {}
 
 // 判断任务是否完全结束
-bool Master::Done() {}
+bool Master::Done() {
+  // TODO: raii记得看看
+  std::lock_guard<std::mutex> g(mtx_);
+  bool ans = (MasterPhrase_ == EXIT);
+  return ans;
+}
 
 // worker任务完成后通知master。rpc方法
-void Master::TaskCompleted(::mrrpc::RPCTask *request) {}
+// master收到完成后的Task，如果所有的MapTask都已经完成，
+// 创建ReduceTask,转入ReduceTask，转入Reduce阶段
+// 如果所有的ReduceTask都已经完成，转入Exit阶段
+bool Master::TaskCompleted(const ::mrrpc::RPCTask *request) {
+  mtx_.lock();
+  int task_no = request->task_no();
+  int task_state = request->task_state();
+  if (task_state != MasterPhrase_ ||
+      TaskMeta_[task_no]->TaskStatus_ == Completed) {
+    // 因为worker写在同一个文件磁盘上，对于重复的结果要丢弃
+    return true;
+  }
+  TaskMeta_[task_no]->TaskStatus_ = Completed;
+  mtx_.unlock();
+  return true;
+}
+
+// 任务结束后调用
+void Master::ProcessTaskResult(const ::mrrpc::RPCTask *request) {
+  std::lock_guard<std::mutex> g(mtx_);
+  int task_state = request->task_state();
+  switch (task_state) {
+  case MAP: {
+    // 收集intermediate信息
+    int intermediates_size = request->intermediates_size();
+    for (int i = 0; i < intermediates_size; i++) {
+      Intermediates_[i].push_back(request->intermediates(i).key_value_pair());
+    }
+    if (AllTaskDone()) {
+      // 获得所有map task后，进入reduce阶段
+      createReduceTask();
+      MasterPhrase_ = REDUCE;
+    }
+    break;
+  }
+  case REDUCE: {
+    if (AllTaskDone()) {
+      // 获得所有reduce task后，进入exit阶段
+      MasterPhrase_ = EXIT;
+    }
+    break;
+  }
+  }
+}
+
+// 判断任务是否都已完成
+bool Master::AllTaskDone() {
+  for (auto [k, v] : TaskMeta_) {
+    if (v->TaskStatus_ != Completed) {
+      return false;
+    }
+  }
+  return true;
+}
 
 // 超时任务判断
 bool Master::CatchTimeOut() {
