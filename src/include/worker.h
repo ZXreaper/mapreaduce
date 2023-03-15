@@ -28,8 +28,13 @@ class Worker {
 public:
   Worker(std::shared_ptr<Channel> channel)
       : stub_(mrrpc::RpcAssignTask::NewStub(channel)) {}
-  // 加载map function 和 reduce function
-  void LoadPlugin(std::string filename);
+  // 加载map function 和 reduce function。
+  // 在example中编写wc文件，在其中编写相应的map function和 reduce function
+  // 之后将wc编译成静态库文件，然后直接使用静态库文件
+  // g++ -c wc.cpp         ->   生成wc.o
+  // ar -crv libwc.a wc.o  ->   生成libwc.a
+  // 编译文件时，g++ xxx.cpp -L./ -lwc -o xxx
+  void LoadPlugin();
 
   // 启动worker端
   void StartWorker();

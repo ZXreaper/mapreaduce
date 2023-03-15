@@ -1,5 +1,2 @@
 set(SRC_LIST wc.cpp)
-
-add_executable(wc ${SRC_LIST})
-
-target_link_libraries(wc)
+add_library(wc ${SRC_LIST})

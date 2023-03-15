@@ -3,10 +3,14 @@
 //
 #include "worker.h"
 #include "master.h"
+#include "wc.h"
 #include <unistd.h>
 
 // 从文件中加载map function 和 reduce function
-void Worker::LoadPlugin(std::string filename) {}
+void Worker::LoadPlugin() {
+  mapf_ = MapReduce::Map;
+  reducef_ = MapReduce::Reduce;
+}
 
 // 启动worker端
 void Worker::StartWorker() {

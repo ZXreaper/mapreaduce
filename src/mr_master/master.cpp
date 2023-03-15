@@ -104,7 +104,8 @@ bool Master::createReduceTask() {}
 
 // 判断任务是否完全结束
 bool Master::Done() {
-  // TODO: raii记得看看
+  // TODO: 搞清楚函数结束前释放锁和函数结束后释放锁的区别。
+  // TODO: 这个位置为什么要加锁
   std::lock_guard<std::mutex> g(mtx_);
   bool ans = (MasterPhrase_ == EXIT);
   return ans;
