@@ -28,6 +28,9 @@ class Worker {
 public:
   Worker(std::shared_ptr<Channel> channel)
       : stub_(mrrpc::RpcAssignTask::NewStub(channel)) {}
+
+  static std::string ReadFile(std::string filename);
+
   // 加载map function 和 reduce function。
   // 在example中编写wc文件，在其中编写相应的map function和 reduce function
   // 之后将wc编译成静态库文件，然后直接使用静态库文件
