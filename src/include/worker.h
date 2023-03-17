@@ -55,7 +55,7 @@ public:
   std::string WriteToLocalFile(int x, int y, KeyValues &kvs);
 
   // 从本地读取中间文件获得map阶段的key values
-  KeyValues &ReadFromLocalFile(std::vector<std::string> files);
+  KeyValues ReadFromLocalFile(std::vector<std::string> files);
 
   // worker任务完成后通知master。rpc方法
   void TaskCompleted(Task &task);

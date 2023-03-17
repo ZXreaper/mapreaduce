@@ -4,7 +4,8 @@
 example/wordcount/mr_wc
 test/.DS_Store
 test/grpc/.DS_Store
-!/test/grpc/helloworld
+/test/grpc/helloworld
+!/test/grpc/helloworld/*.cc
 /test/grpc/helloworld/cmake
 /test/grpc/helloworld/cmake_externalproject
 /test/grpc/helloworld/cocoapods

@@ -1,0 +1,197 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						5
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5.1"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4
+					],
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5.1"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src"
+				},
+				{
+					"build" : "src/mr_master",
+					"jsonFile" : "directory-src.mr_master-Debug-c2e9ec2469677e7ebea1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5.1"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/mr_master",
+					"targetIndexes" : 
+					[
+						0,
+						3
+					]
+				},
+				{
+					"build" : "src/mr_worker",
+					"jsonFile" : "directory-src.mr_worker-Debug-aa25d79519a9fce7dd11.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5.1"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/mr_worker",
+					"targetIndexes" : 
+					[
+						1,
+						4
+					]
+				},
+				{
+					"build" : "src/rpc",
+					"jsonFile" : "directory-src.rpc-Debug-7cfaa0b0de104e780152.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5.1"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/rpc",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "example/wordcount",
+					"jsonFile" : "directory-example.wordcount-Debug-ae2e3e814edd5761129c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5.1"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "example/wordcount",
+					"targetIndexes" : 
+					[
+						6
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					],
+					"name" : "mapreduce",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "mapreduce_master::@3cb7770f990cc0913d66",
+					"jsonFile" : "target-mapreduce_master-Debug-395a686085dc1ede3260.json",
+					"name" : "mapreduce_master",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "mapreduce_worker::@f67c6cd7eb5f61c332fa",
+					"jsonFile" : "target-mapreduce_worker-Debug-c35febe1dcf8135f4621.json",
+					"name" : "mapreduce_worker",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mr_grpc_proto::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mr_grpc_proto-Debug-0b6dd174a10b721fc5f7.json",
+					"name" : "mr_grpc_proto",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "mr_master::@3cb7770f990cc0913d66",
+					"jsonFile" : "target-mr_master-Debug-692700c3ef60deffc2db.json",
+					"name" : "mr_master",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "mr_worker::@f67c6cd7eb5f61c332fa",
+					"jsonFile" : "target-mr_worker-Debug-2d7c5b30372a987d3c6e.json",
+					"name" : "mr_worker",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "mrrpc::@c0b061266edb2b3621b8",
+					"jsonFile" : "target-mrrpc-Debug-1ff698829cfdacb871f9.json",
+					"name" : "mrrpc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "wc::@a4714ef33b245e2600b5",
+					"jsonFile" : "target-wc-Debug-296524021e18739cedcf.json",
+					"name" : "wc",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/zhangxu/D/mapreduce/build",
+		"source" : "/Users/zhangxu/D/mapreduce"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

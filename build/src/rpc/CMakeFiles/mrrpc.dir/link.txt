@@ -1,0 +1,2 @@
+/usr/bin/ar qc /Users/zhangxu/D/mapreduce/lib/libmrrpc.a CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.o CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.o
+/usr/bin/ranlib /Users/zhangxu/D/mapreduce/lib/libmrrpc.a

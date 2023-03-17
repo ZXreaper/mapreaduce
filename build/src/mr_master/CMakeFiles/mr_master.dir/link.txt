@@ -1,0 +1,1 @@
+/usr/bin/clang++ -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/mr_master.dir/master.cpp.o CMakeFiles/mr_master.dir/mr_master.cpp.o CMakeFiles/mr_master.dir/rpc.cpp.o -o /Users/zhangxu/D/mapreduce/bin/mr_master   -L/Users/zhangxu/D/mapreduce/lib 

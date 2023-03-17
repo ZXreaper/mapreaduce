@@ -1,0 +1,2 @@
+/usr/bin/ar qc /Users/zhangxu/D/mapreduce/lib/libwc.a CMakeFiles/wc.dir/wc.cpp.o
+/usr/bin/ranlib /Users/zhangxu/D/mapreduce/lib/libwc.a

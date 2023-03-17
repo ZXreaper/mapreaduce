@@ -2,12 +2,17 @@
 // Created by 张旭 on 2023/3/7.
 //
 #include "worker.h"
+#include "json.hpp"
 #include "master.h"
 #include "wc.h"
 #include <filesystem>
 #include <fstream>
 #include <functional>
+#include <sstream>
 #include <unistd.h>
+#include <unordered_map>
+
+using json = nlohmann::json;
 
 // 从文件中加载map function 和 reduce function
 void Worker::LoadPlugin() {
@@ -145,7 +150,39 @@ void Worker::Mapper(Task &task) {
 }
 
 // worker获得ReduceTask，交给reducer处理
-void Worker::Reducer(Task &task) {}
+void Worker::Reducer(Task &task) {
+  KeyValues intermediate = ReadFromLocalFile(task.Intermediates_);
+  std::sort(intermediate.begin(), intermediate.end(),
+            [&](KeyValue a, KeyValue b) -> bool { return a.Key < b.Key; });
+
+  // 写到对应的output文件中
+  char cwd_path[32];
+  getcwd(cwd_path, 32);
+  std::string dir = std::string(cwd_path) + "/mr-tmp";
+  char outputfilename[32];
+  sprintf(outputfilename, "/mr-out-%d", task.TaskNumber_);
+  std::string file_path = dir + std::string(outputfilename);
+  std::ofstream out(file_path, std::ios::app);
+
+  // 将相同的key放在一起并分组合并
+  int i = 0, j = i + 1;
+  while (i < intermediate.size()) {
+    while (j < intermediate.size() &&
+           (intermediate[i].Key == intermediate[j].Key))
+      j++;
+    std::vector<std::string> values;
+    for (int k = i; k < j; k++) {
+      values.push_back(intermediate[k].Value);
+    }
+    // 交给reducef，拿到结果
+    std::string output = reducef_(intermediate[i].Key, values);
+    out << (intermediate[i].Key + " " + output + "\n");
+    i = j;
+  }
+  out.close();
+  task.Output_ = file_path;
+  TaskCompleted(task);
+}
 
 // 将中间结果写到本地文件
 std::string Worker::WriteToLocalFile(int x, int y, KeyValues &kvs) {
@@ -154,22 +191,50 @@ std::string Worker::WriteToLocalFile(int x, int y, KeyValues &kvs) {
   // 创建文件夹
   std::string dir = std::string(file_path) + "/mr-tmp";
   // 创建文件夹
-  if (0 != std::filesystem::create_directory(dir)) {
-    // 返回 0 表示创建成功，-1 表示失败
+  if (!std::filesystem::create_directory(dir)) {
     std::cout << "create directories failed!" << std::endl;
+    return "";
   }
-  // TODO: json序列化key value
-  std::string msg = "hello world!";
-  std::ofstream out(file_path, std::ios::trunc);
-  int len = msg.size();
+  // json序列化
+  json js;
+  std::unordered_map<std::string, std::string> hashtable;
+  for (auto &kv : kvs) {
+    hashtable.insert({kv.Key, kv.Value});
+  }
+  js["kvs"] = hashtable;
+  std::string jsonstr = js.dump();
+  char tempfilename[32];
+  sprintf(tempfilename, "/mr-%d-%d", x, y);
+  std::string json_file_path = dir + std::string(tempfilename);
+  std::ofstream out(json_file_path, std::ios::trunc);
+  int len = jsonstr.size();
   for (int i = 0; i < len; i++) {
-    out << msg[i];
+    out << jsonstr[i];
   }
   out.close();
+  return json_file_path;
 }
 
 // 从本地读取中间文件获得map阶段的key values
-KeyValues &Worker::ReadFromLocalFile(std::vector<std::string> files) {}
+KeyValues Worker::ReadFromLocalFile(std::vector<std::string> files) {
+  KeyValues kvs;
+  for (auto filename : files) {
+    // 读文件内容，并反序列化
+    std::ifstream inFile;
+    inFile.open(filename); // open the input file
+    std::stringstream strStream;
+    strStream << inFile.rdbuf();       // read the file
+    std::string str = strStream.str(); // str holds the content of the file
+
+    // 反序列化
+    json res = json::parse(str);
+    std::unordered_map<std::string, std::string> hashtable = res["kvs"];
+    for (auto &[k, v] : hashtable) {
+      kvs.push_back({k, v});
+    }
+  }
+  return kvs;
+}
 
 // worker任务完成后通知master。rpc方法
 void Worker::TaskCompleted(Task &task) {
