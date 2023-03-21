@@ -1,77 +1,52 @@
 [
 {
   "directory": "/Users/zhangxu/D/mapreduce/build",
-  "command": "/usr/bin/clang++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -isystem /usr/local/include -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_grpc_proto.dir/src/rpc/mrrpcfunction.grpc.pb.cc.o -c /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.grpc.pb.cc",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/src/rpc -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_grpc_proto.dir/src/rpc/mrrpcfunction.grpc.pb.cc.o -c /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.grpc.pb.cc",
   "file": "/Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.grpc.pb.cc"
 },
 {
   "directory": "/Users/zhangxu/D/mapreduce/build",
-  "command": "/usr/bin/clang++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -isystem /usr/local/include -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_grpc_proto.dir/src/rpc/mrrpcfunction.pb.cc.o -c /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.pb.cc",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/src/rpc -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_grpc_proto.dir/src/rpc/mrrpcfunction.pb.cc.o -c /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.pb.cc",
   "file": "/Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.pb.cc"
 },
 {
   "directory": "/Users/zhangxu/D/mapreduce/build/src/mr_master",
-  "command": "/usr/bin/clang++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -isystem /usr/local/include -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mapreduce_master.dir/master.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_master/master.cpp",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/src/rpc -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_master.dir/master.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_master/master.cpp",
   "file": "/Users/zhangxu/D/mapreduce/src/mr_master/master.cpp"
 },
 {
   "directory": "/Users/zhangxu/D/mapreduce/build/src/mr_master",
-  "command": "/usr/bin/clang++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -isystem /usr/local/include -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mapreduce_master.dir/mr_master.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_master/mr_master.cpp",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/src/rpc -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_master.dir/mr_master.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_master/mr_master.cpp",
   "file": "/Users/zhangxu/D/mapreduce/src/mr_master/mr_master.cpp"
 },
 {
   "directory": "/Users/zhangxu/D/mapreduce/build/src/mr_master",
-  "command": "/usr/bin/clang++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -isystem /usr/local/include -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mapreduce_master.dir/rpc.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_master/rpc.cpp",
-  "file": "/Users/zhangxu/D/mapreduce/src/mr_master/rpc.cpp"
-},
-{
-  "directory": "/Users/zhangxu/D/mapreduce/build/src/mr_master",
-  "command": "/usr/bin/clang++  -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_master.dir/master.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_master/master.cpp",
-  "file": "/Users/zhangxu/D/mapreduce/src/mr_master/master.cpp"
-},
-{
-  "directory": "/Users/zhangxu/D/mapreduce/build/src/mr_master",
-  "command": "/usr/bin/clang++  -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_master.dir/mr_master.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_master/mr_master.cpp",
-  "file": "/Users/zhangxu/D/mapreduce/src/mr_master/mr_master.cpp"
-},
-{
-  "directory": "/Users/zhangxu/D/mapreduce/build/src/mr_master",
-  "command": "/usr/bin/clang++  -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_master.dir/rpc.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_master/rpc.cpp",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/src/rpc -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_master.dir/rpc.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_master/rpc.cpp",
   "file": "/Users/zhangxu/D/mapreduce/src/mr_master/rpc.cpp"
 },
 {
   "directory": "/Users/zhangxu/D/mapreduce/build/src/mr_worker",
-  "command": "/usr/bin/clang++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -isystem /usr/local/include -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mapreduce_worker.dir/mr_worker.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_worker/mr_worker.cpp",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/src/rpc -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_worker.dir/mr_worker.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_worker/mr_worker.cpp",
   "file": "/Users/zhangxu/D/mapreduce/src/mr_worker/mr_worker.cpp"
 },
 {
   "directory": "/Users/zhangxu/D/mapreduce/build/src/mr_worker",
-  "command": "/usr/bin/clang++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -isystem /usr/local/include -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mapreduce_worker.dir/worker.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_worker/worker.cpp",
-  "file": "/Users/zhangxu/D/mapreduce/src/mr_worker/worker.cpp"
-},
-{
-  "directory": "/Users/zhangxu/D/mapreduce/build/src/mr_worker",
-  "command": "/usr/bin/clang++  -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_worker.dir/mr_worker.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_worker/mr_worker.cpp",
-  "file": "/Users/zhangxu/D/mapreduce/src/mr_worker/mr_worker.cpp"
-},
-{
-  "directory": "/Users/zhangxu/D/mapreduce/build/src/mr_worker",
-  "command": "/usr/bin/clang++  -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_worker.dir/worker.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_worker/worker.cpp",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -DCARES_STATICLIB -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/src/rpc -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mr_worker.dir/worker.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_worker/worker.cpp",
   "file": "/Users/zhangxu/D/mapreduce/src/mr_worker/worker.cpp"
 },
 {
   "directory": "/Users/zhangxu/D/mapreduce/build/src/rpc",
-  "command": "/usr/bin/clang++  -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.o -c /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.grpc.pb.cc",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/src/rpc -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.o -c /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.grpc.pb.cc",
   "file": "/Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.grpc.pb.cc"
 },
 {
   "directory": "/Users/zhangxu/D/mapreduce/build/src/rpc",
-  "command": "/usr/bin/clang++  -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.o -c /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.pb.cc",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/src/rpc -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.o -c /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.pb.cc",
   "file": "/Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.pb.cc"
 },
 {
   "directory": "/Users/zhangxu/D/mapreduce/build/example/wordcount",
-  "command": "/usr/bin/clang++  -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/wc.dir/wc.cpp.o -c /Users/zhangxu/D/mapreduce/example/wordcount/wc.cpp",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/zhangxu/D/mapreduce/src/include -I/Users/zhangxu/D/mapreduce/src/rpc -I/Users/zhangxu/D/mapreduce/example/wordcount -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++17 -o CMakeFiles/wc.dir/wc.cpp.o -c /Users/zhangxu/D/mapreduce/example/wordcount/wc.cpp",
   "file": "/Users/zhangxu/D/mapreduce/example/wordcount/wc.cpp"
 }
 ]

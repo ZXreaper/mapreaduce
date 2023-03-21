@@ -1,2 +1,0 @@
-/usr/bin/ar qc /Users/zhangxu/D/mapreduce/lib/libmapreduce_master.a CMakeFiles/mapreduce_master.dir/master.cpp.o CMakeFiles/mapreduce_master.dir/mr_master.cpp.o CMakeFiles/mapreduce_master.dir/rpc.cpp.o
-/usr/bin/ranlib /Users/zhangxu/D/mapreduce/lib/libmapreduce_master.a

@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
       grpc::CreateChannel(target_str, grpc::InsecureChannelCredentials()));
 
   // 获取map和reduce方法
-  worker.LoadPlugin();
+  // worker.LoadPlugin();
 
   // worker启动
   worker.StartWorker();

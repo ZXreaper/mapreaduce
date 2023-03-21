@@ -14,11 +14,11 @@
 
 using json = nlohmann::json;
 
-// 从文件中加载map function 和 reduce function
-void Worker::LoadPlugin() {
-  mapf_ = MapReduce::Map;
-  reducef_ = MapReduce::Reduce;
-}
+// // 从文件中加载map function 和 reduce function
+// void Worker::LoadPlugin() {
+//   mapf_ = MapReduce::Map;
+//   reducef_ = MapReduce::Reduce;
+// }
 
 // 启动worker端
 void Worker::StartWorker() {
@@ -50,7 +50,7 @@ void Worker::StartWorker() {
 Task Worker::GetTask() {
   mrrpc::AssignTaskRequest args;
   mrrpc::RPCTask reply;
-  args.set_assign_arg(1); // no use
+  // args.set_assign_arg(1); // no use
   ClientContext context;
   Status status = stub_->AssignTask(&context, args, &reply);
 
@@ -131,7 +131,8 @@ void Worker::Mapper(Task &task) {
     return;
   }
   // 将content交给mapf，缓存结果
-  KeyValues intermediates = mapf_(filename, content);
+  // KeyValues intermediates = mapf_(filename, content);
+  KeyValues intermediates = MapReduce::Map(filename, content);
 
   // 缓存后的结果会写到本地磁盘，并切成R份
   // 切分方式是根据key做hash
@@ -175,7 +176,8 @@ void Worker::Reducer(Task &task) {
       values.push_back(intermediate[k].Value);
     }
     // 交给reducef，拿到结果
-    std::string output = reducef_(intermediate[i].Key, values);
+    // std::string output = reducef_(intermediate[i].Key, values);
+    std::string output = MapReduce::Reduce(intermediate[i].Key, values);
     out << (intermediate[i].Key + " " + output + "\n");
     i = j;
   }

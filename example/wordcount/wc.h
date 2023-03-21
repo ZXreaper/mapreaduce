@@ -5,17 +5,13 @@
 #ifndef MAPREDUCE_WC_H
 #define MAPREDUCE_WC_H
 
+#include "kv.hpp"
 #include <string>
 #include <vector>
 
-struct KeyValue {
-  std::string Key;
-  std::string Value;
-};
-
 class MapReduce {
 public:
-  static std::vector<KeyValue> Map(std::string filename, std::string contents);
+  static KeyValues Map(std::string filename, std::string contents);
   static std::string Reduce(std::string key, std::vector<std::string>);
 };
 

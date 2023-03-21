@@ -130,19 +130,6 @@ mr_grpc_proto/fast:
 .PHONY : mr_grpc_proto/fast
 
 #=============================================================================
-# Target rules for targets named mapreduce_master
-
-# Build rule for target.
-mapreduce_master: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mapreduce_master
-.PHONY : mapreduce_master
-
-# fast build rule for target.
-mapreduce_master/fast:
-	$(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/build
-.PHONY : mapreduce_master/fast
-
-#=============================================================================
 # Target rules for targets named mr_master
 
 # Build rule for target.
@@ -154,19 +141,6 @@ mr_master: cmake_check_build_system
 mr_master/fast:
 	$(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mr_master.dir/build.make src/mr_master/CMakeFiles/mr_master.dir/build
 .PHONY : mr_master/fast
-
-#=============================================================================
-# Target rules for targets named mapreduce_worker
-
-# Build rule for target.
-mapreduce_worker: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mapreduce_worker
-.PHONY : mapreduce_worker
-
-# fast build rule for target.
-mapreduce_worker/fast:
-	$(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mapreduce_worker.dir/build.make src/mr_worker/CMakeFiles/mapreduce_worker.dir/build
-.PHONY : mapreduce_worker/fast
 
 #=============================================================================
 # Target rules for targets named mr_worker
@@ -263,8 +237,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... mapreduce_master"
-	@echo "... mapreduce_worker"
 	@echo "... mr_grpc_proto"
 	@echo "... mr_master"
 	@echo "... mr_worker"

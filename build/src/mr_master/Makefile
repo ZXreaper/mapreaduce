@@ -117,20 +117,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/mr_master/CMakeFiles/mapreduce_master.dir/rule:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/mr_master/CMakeFiles/mapreduce_master.dir/rule
-.PHONY : src/mr_master/CMakeFiles/mapreduce_master.dir/rule
-
-# Convenience name for target.
-mapreduce_master: src/mr_master/CMakeFiles/mapreduce_master.dir/rule
-.PHONY : mapreduce_master
-
-# fast build rule for target.
-mapreduce_master/fast:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/build
-.PHONY : mapreduce_master/fast
-
-# Convenience name for target.
 src/mr_master/CMakeFiles/mr_master.dir/rule:
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/mr_master/CMakeFiles/mr_master.dir/rule
 .PHONY : src/mr_master/CMakeFiles/mr_master.dir/rule
@@ -149,7 +135,6 @@ master.o: master.cpp.o
 
 # target to build an object file
 master.cpp.o:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/master.cpp.o
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mr_master.dir/build.make src/mr_master/CMakeFiles/mr_master.dir/master.cpp.o
 .PHONY : master.cpp.o
 
@@ -158,7 +143,6 @@ master.i: master.cpp.i
 
 # target to preprocess a source file
 master.cpp.i:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/master.cpp.i
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mr_master.dir/build.make src/mr_master/CMakeFiles/mr_master.dir/master.cpp.i
 .PHONY : master.cpp.i
 
@@ -167,7 +151,6 @@ master.s: master.cpp.s
 
 # target to generate assembly for a file
 master.cpp.s:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/master.cpp.s
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mr_master.dir/build.make src/mr_master/CMakeFiles/mr_master.dir/master.cpp.s
 .PHONY : master.cpp.s
 
@@ -176,7 +159,6 @@ mr_master.o: mr_master.cpp.o
 
 # target to build an object file
 mr_master.cpp.o:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/mr_master.cpp.o
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mr_master.dir/build.make src/mr_master/CMakeFiles/mr_master.dir/mr_master.cpp.o
 .PHONY : mr_master.cpp.o
 
@@ -185,7 +167,6 @@ mr_master.i: mr_master.cpp.i
 
 # target to preprocess a source file
 mr_master.cpp.i:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/mr_master.cpp.i
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mr_master.dir/build.make src/mr_master/CMakeFiles/mr_master.dir/mr_master.cpp.i
 .PHONY : mr_master.cpp.i
 
@@ -194,7 +175,6 @@ mr_master.s: mr_master.cpp.s
 
 # target to generate assembly for a file
 mr_master.cpp.s:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/mr_master.cpp.s
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mr_master.dir/build.make src/mr_master/CMakeFiles/mr_master.dir/mr_master.cpp.s
 .PHONY : mr_master.cpp.s
 
@@ -203,7 +183,6 @@ rpc.o: rpc.cpp.o
 
 # target to build an object file
 rpc.cpp.o:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/rpc.cpp.o
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mr_master.dir/build.make src/mr_master/CMakeFiles/mr_master.dir/rpc.cpp.o
 .PHONY : rpc.cpp.o
 
@@ -212,7 +191,6 @@ rpc.i: rpc.cpp.i
 
 # target to preprocess a source file
 rpc.cpp.i:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/rpc.cpp.i
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mr_master.dir/build.make src/mr_master/CMakeFiles/mr_master.dir/rpc.cpp.i
 .PHONY : rpc.cpp.i
 
@@ -221,7 +199,6 @@ rpc.s: rpc.cpp.s
 
 # target to generate assembly for a file
 rpc.cpp.s:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/rpc.cpp.s
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mr_master.dir/build.make src/mr_master/CMakeFiles/mr_master.dir/rpc.cpp.s
 .PHONY : rpc.cpp.s
 
@@ -233,7 +210,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... mapreduce_master"
 	@echo "... mr_master"
 	@echo "... master.o"
 	@echo "... master.i"

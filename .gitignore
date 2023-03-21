@@ -1,5 +1,8 @@
 /cmake-build-debug/
 .DS_Store
+/bin
+/build
+/lib
 .idea/
 example/wordcount/mr_wc
 test/.DS_Store

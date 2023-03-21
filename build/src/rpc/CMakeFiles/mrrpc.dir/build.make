@@ -73,29 +73,29 @@ src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.o: src/rpc/CMakeFiles/mrrp
 src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.o: /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.grpc.pb.cc
 src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.o: src/rpc/CMakeFiles/mrrpc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.o"
-	cd /Users/zhangxu/D/mapreduce/build/src/rpc && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.o -MF CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.o.d -o CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.o -c /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.grpc.pb.cc
+	cd /Users/zhangxu/D/mapreduce/build/src/rpc && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.o -MF CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.o.d -o CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.o -c /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.grpc.pb.cc
 
 src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.i"
-	cd /Users/zhangxu/D/mapreduce/build/src/rpc && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.grpc.pb.cc > CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.i
+	cd /Users/zhangxu/D/mapreduce/build/src/rpc && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.grpc.pb.cc > CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.i
 
 src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.s"
-	cd /Users/zhangxu/D/mapreduce/build/src/rpc && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.grpc.pb.cc -o CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.s
+	cd /Users/zhangxu/D/mapreduce/build/src/rpc && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.grpc.pb.cc -o CMakeFiles/mrrpc.dir/mrrpcfunction.grpc.pb.cc.s
 
 src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.o: src/rpc/CMakeFiles/mrrpc.dir/flags.make
 src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.o: /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.pb.cc
 src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.o: src/rpc/CMakeFiles/mrrpc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.o"
-	cd /Users/zhangxu/D/mapreduce/build/src/rpc && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.o -MF CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.o.d -o CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.o -c /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.pb.cc
+	cd /Users/zhangxu/D/mapreduce/build/src/rpc && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.o -MF CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.o.d -o CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.o -c /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.pb.cc
 
 src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.i"
-	cd /Users/zhangxu/D/mapreduce/build/src/rpc && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.pb.cc > CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.i
+	cd /Users/zhangxu/D/mapreduce/build/src/rpc && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.pb.cc > CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.i
 
 src/rpc/CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.s"
-	cd /Users/zhangxu/D/mapreduce/build/src/rpc && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.pb.cc -o CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.s
+	cd /Users/zhangxu/D/mapreduce/build/src/rpc && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhangxu/D/mapreduce/src/rpc/mrrpcfunction.pb.cc -o CMakeFiles/mrrpc.dir/mrrpcfunction.pb.cc.s
 
 # Object files for target mrrpc
 mrrpc_OBJECTS = \

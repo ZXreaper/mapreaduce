@@ -1,2 +1,2 @@
-/usr/bin/ar qc /Users/zhangxu/D/mapreduce/lib/libmr_grpc_proto.a CMakeFiles/mr_grpc_proto.dir/src/rpc/mrrpcfunction.grpc.pb.cc.o CMakeFiles/mr_grpc_proto.dir/src/rpc/mrrpcfunction.pb.cc.o
-/usr/bin/ranlib /Users/zhangxu/D/mapreduce/lib/libmr_grpc_proto.a
+/Library/Developer/CommandLineTools/usr/bin/ar qc /Users/zhangxu/D/mapreduce/lib/libmr_grpc_proto.a CMakeFiles/mr_grpc_proto.dir/src/rpc/mrrpcfunction.grpc.pb.cc.o CMakeFiles/mr_grpc_proto.dir/src/rpc/mrrpcfunction.pb.cc.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib /Users/zhangxu/D/mapreduce/lib/libmr_grpc_proto.a

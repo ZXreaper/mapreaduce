@@ -73,15 +73,15 @@ example/wordcount/CMakeFiles/wc.dir/wc.cpp.o: example/wordcount/CMakeFiles/wc.di
 example/wordcount/CMakeFiles/wc.dir/wc.cpp.o: /Users/zhangxu/D/mapreduce/example/wordcount/wc.cpp
 example/wordcount/CMakeFiles/wc.dir/wc.cpp.o: example/wordcount/CMakeFiles/wc.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/wordcount/CMakeFiles/wc.dir/wc.cpp.o"
-	cd /Users/zhangxu/D/mapreduce/build/example/wordcount && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/wordcount/CMakeFiles/wc.dir/wc.cpp.o -MF CMakeFiles/wc.dir/wc.cpp.o.d -o CMakeFiles/wc.dir/wc.cpp.o -c /Users/zhangxu/D/mapreduce/example/wordcount/wc.cpp
+	cd /Users/zhangxu/D/mapreduce/build/example/wordcount && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/wordcount/CMakeFiles/wc.dir/wc.cpp.o -MF CMakeFiles/wc.dir/wc.cpp.o.d -o CMakeFiles/wc.dir/wc.cpp.o -c /Users/zhangxu/D/mapreduce/example/wordcount/wc.cpp
 
 example/wordcount/CMakeFiles/wc.dir/wc.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/wc.dir/wc.cpp.i"
-	cd /Users/zhangxu/D/mapreduce/build/example/wordcount && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhangxu/D/mapreduce/example/wordcount/wc.cpp > CMakeFiles/wc.dir/wc.cpp.i
+	cd /Users/zhangxu/D/mapreduce/build/example/wordcount && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhangxu/D/mapreduce/example/wordcount/wc.cpp > CMakeFiles/wc.dir/wc.cpp.i
 
 example/wordcount/CMakeFiles/wc.dir/wc.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/wc.dir/wc.cpp.s"
-	cd /Users/zhangxu/D/mapreduce/build/example/wordcount && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhangxu/D/mapreduce/example/wordcount/wc.cpp -o CMakeFiles/wc.dir/wc.cpp.s
+	cd /Users/zhangxu/D/mapreduce/build/example/wordcount && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhangxu/D/mapreduce/example/wordcount/wc.cpp -o CMakeFiles/wc.dir/wc.cpp.s
 
 # Object files for target wc
 wc_OBJECTS = \

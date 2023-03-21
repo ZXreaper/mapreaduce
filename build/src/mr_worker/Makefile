@@ -117,20 +117,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/mr_worker/CMakeFiles/mapreduce_worker.dir/rule:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/mr_worker/CMakeFiles/mapreduce_worker.dir/rule
-.PHONY : src/mr_worker/CMakeFiles/mapreduce_worker.dir/rule
-
-# Convenience name for target.
-mapreduce_worker: src/mr_worker/CMakeFiles/mapreduce_worker.dir/rule
-.PHONY : mapreduce_worker
-
-# fast build rule for target.
-mapreduce_worker/fast:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mapreduce_worker.dir/build.make src/mr_worker/CMakeFiles/mapreduce_worker.dir/build
-.PHONY : mapreduce_worker/fast
-
-# Convenience name for target.
 src/mr_worker/CMakeFiles/mr_worker.dir/rule:
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/mr_worker/CMakeFiles/mr_worker.dir/rule
 .PHONY : src/mr_worker/CMakeFiles/mr_worker.dir/rule
@@ -149,7 +135,6 @@ mr_worker.o: mr_worker.cpp.o
 
 # target to build an object file
 mr_worker.cpp.o:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mapreduce_worker.dir/build.make src/mr_worker/CMakeFiles/mapreduce_worker.dir/mr_worker.cpp.o
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mr_worker.dir/build.make src/mr_worker/CMakeFiles/mr_worker.dir/mr_worker.cpp.o
 .PHONY : mr_worker.cpp.o
 
@@ -158,7 +143,6 @@ mr_worker.i: mr_worker.cpp.i
 
 # target to preprocess a source file
 mr_worker.cpp.i:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mapreduce_worker.dir/build.make src/mr_worker/CMakeFiles/mapreduce_worker.dir/mr_worker.cpp.i
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mr_worker.dir/build.make src/mr_worker/CMakeFiles/mr_worker.dir/mr_worker.cpp.i
 .PHONY : mr_worker.cpp.i
 
@@ -167,7 +151,6 @@ mr_worker.s: mr_worker.cpp.s
 
 # target to generate assembly for a file
 mr_worker.cpp.s:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mapreduce_worker.dir/build.make src/mr_worker/CMakeFiles/mapreduce_worker.dir/mr_worker.cpp.s
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mr_worker.dir/build.make src/mr_worker/CMakeFiles/mr_worker.dir/mr_worker.cpp.s
 .PHONY : mr_worker.cpp.s
 
@@ -176,7 +159,6 @@ worker.o: worker.cpp.o
 
 # target to build an object file
 worker.cpp.o:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mapreduce_worker.dir/build.make src/mr_worker/CMakeFiles/mapreduce_worker.dir/worker.cpp.o
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mr_worker.dir/build.make src/mr_worker/CMakeFiles/mr_worker.dir/worker.cpp.o
 .PHONY : worker.cpp.o
 
@@ -185,7 +167,6 @@ worker.i: worker.cpp.i
 
 # target to preprocess a source file
 worker.cpp.i:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mapreduce_worker.dir/build.make src/mr_worker/CMakeFiles/mapreduce_worker.dir/worker.cpp.i
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mr_worker.dir/build.make src/mr_worker/CMakeFiles/mr_worker.dir/worker.cpp.i
 .PHONY : worker.cpp.i
 
@@ -194,7 +175,6 @@ worker.s: worker.cpp.s
 
 # target to generate assembly for a file
 worker.cpp.s:
-	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mapreduce_worker.dir/build.make src/mr_worker/CMakeFiles/mapreduce_worker.dir/worker.cpp.s
 	cd /Users/zhangxu/D/mapreduce/build && $(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mr_worker.dir/build.make src/mr_worker/CMakeFiles/mr_worker.dir/worker.cpp.s
 .PHONY : worker.cpp.s
 
@@ -206,7 +186,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... mapreduce_worker"
 	@echo "... mr_worker"
 	@echo "... mr_worker.o"
 	@echo "... mr_worker.i"

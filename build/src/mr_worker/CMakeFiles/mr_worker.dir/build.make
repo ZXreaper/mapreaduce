@@ -73,29 +73,29 @@ src/mr_worker/CMakeFiles/mr_worker.dir/mr_worker.cpp.o: src/mr_worker/CMakeFiles
 src/mr_worker/CMakeFiles/mr_worker.dir/mr_worker.cpp.o: /Users/zhangxu/D/mapreduce/src/mr_worker/mr_worker.cpp
 src/mr_worker/CMakeFiles/mr_worker.dir/mr_worker.cpp.o: src/mr_worker/CMakeFiles/mr_worker.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/mr_worker/CMakeFiles/mr_worker.dir/mr_worker.cpp.o"
-	cd /Users/zhangxu/D/mapreduce/build/src/mr_worker && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/mr_worker/CMakeFiles/mr_worker.dir/mr_worker.cpp.o -MF CMakeFiles/mr_worker.dir/mr_worker.cpp.o.d -o CMakeFiles/mr_worker.dir/mr_worker.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_worker/mr_worker.cpp
+	cd /Users/zhangxu/D/mapreduce/build/src/mr_worker && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/mr_worker/CMakeFiles/mr_worker.dir/mr_worker.cpp.o -MF CMakeFiles/mr_worker.dir/mr_worker.cpp.o.d -o CMakeFiles/mr_worker.dir/mr_worker.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_worker/mr_worker.cpp
 
 src/mr_worker/CMakeFiles/mr_worker.dir/mr_worker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mr_worker.dir/mr_worker.cpp.i"
-	cd /Users/zhangxu/D/mapreduce/build/src/mr_worker && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhangxu/D/mapreduce/src/mr_worker/mr_worker.cpp > CMakeFiles/mr_worker.dir/mr_worker.cpp.i
+	cd /Users/zhangxu/D/mapreduce/build/src/mr_worker && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhangxu/D/mapreduce/src/mr_worker/mr_worker.cpp > CMakeFiles/mr_worker.dir/mr_worker.cpp.i
 
 src/mr_worker/CMakeFiles/mr_worker.dir/mr_worker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mr_worker.dir/mr_worker.cpp.s"
-	cd /Users/zhangxu/D/mapreduce/build/src/mr_worker && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhangxu/D/mapreduce/src/mr_worker/mr_worker.cpp -o CMakeFiles/mr_worker.dir/mr_worker.cpp.s
+	cd /Users/zhangxu/D/mapreduce/build/src/mr_worker && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhangxu/D/mapreduce/src/mr_worker/mr_worker.cpp -o CMakeFiles/mr_worker.dir/mr_worker.cpp.s
 
 src/mr_worker/CMakeFiles/mr_worker.dir/worker.cpp.o: src/mr_worker/CMakeFiles/mr_worker.dir/flags.make
 src/mr_worker/CMakeFiles/mr_worker.dir/worker.cpp.o: /Users/zhangxu/D/mapreduce/src/mr_worker/worker.cpp
 src/mr_worker/CMakeFiles/mr_worker.dir/worker.cpp.o: src/mr_worker/CMakeFiles/mr_worker.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/mr_worker/CMakeFiles/mr_worker.dir/worker.cpp.o"
-	cd /Users/zhangxu/D/mapreduce/build/src/mr_worker && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/mr_worker/CMakeFiles/mr_worker.dir/worker.cpp.o -MF CMakeFiles/mr_worker.dir/worker.cpp.o.d -o CMakeFiles/mr_worker.dir/worker.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_worker/worker.cpp
+	cd /Users/zhangxu/D/mapreduce/build/src/mr_worker && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/mr_worker/CMakeFiles/mr_worker.dir/worker.cpp.o -MF CMakeFiles/mr_worker.dir/worker.cpp.o.d -o CMakeFiles/mr_worker.dir/worker.cpp.o -c /Users/zhangxu/D/mapreduce/src/mr_worker/worker.cpp
 
 src/mr_worker/CMakeFiles/mr_worker.dir/worker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mr_worker.dir/worker.cpp.i"
-	cd /Users/zhangxu/D/mapreduce/build/src/mr_worker && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhangxu/D/mapreduce/src/mr_worker/worker.cpp > CMakeFiles/mr_worker.dir/worker.cpp.i
+	cd /Users/zhangxu/D/mapreduce/build/src/mr_worker && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhangxu/D/mapreduce/src/mr_worker/worker.cpp > CMakeFiles/mr_worker.dir/worker.cpp.i
 
 src/mr_worker/CMakeFiles/mr_worker.dir/worker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mr_worker.dir/worker.cpp.s"
-	cd /Users/zhangxu/D/mapreduce/build/src/mr_worker && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhangxu/D/mapreduce/src/mr_worker/worker.cpp -o CMakeFiles/mr_worker.dir/worker.cpp.s
+	cd /Users/zhangxu/D/mapreduce/build/src/mr_worker && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhangxu/D/mapreduce/src/mr_worker/worker.cpp -o CMakeFiles/mr_worker.dir/worker.cpp.s
 
 # Object files for target mr_worker
 mr_worker_OBJECTS = \
@@ -108,6 +108,66 @@ mr_worker_EXTERNAL_OBJECTS =
 /Users/zhangxu/D/mapreduce/bin/mr_worker: src/mr_worker/CMakeFiles/mr_worker.dir/mr_worker.cpp.o
 /Users/zhangxu/D/mapreduce/bin/mr_worker: src/mr_worker/CMakeFiles/mr_worker.dir/worker.cpp.o
 /Users/zhangxu/D/mapreduce/bin/mr_worker: src/mr_worker/CMakeFiles/mr_worker.dir/build.make
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /Users/zhangxu/D/mapreduce/lib/libwc.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /Users/zhangxu/D/mapreduce/lib/libmrrpc.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /Users/zhangxu/D/mapreduce/lib/libmr_grpc_proto.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libgrpc++_reflection.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libgrpc++.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libprotobuf.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libgrpc.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libcares.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libaddress_sorting.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libre2.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libupb.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_raw_hash_set.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_hashtablez_sampler.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_hash.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_city.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_low_level_hash.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_statusor.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libgpr.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libz.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_bad_variant_access.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_status.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_strerror.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_random_distributions.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_random_seed_sequences.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_random_internal_pool_urbg.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_random_internal_randen.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_random_internal_randen_hwaes.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_random_internal_randen_hwaes_impl.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_random_internal_randen_slow.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_random_internal_platform.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_random_internal_seed_material.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_random_seed_gen_exception.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_cord.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_bad_optional_access.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_cordz_info.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_cord_internal.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_cordz_functions.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_exponential_biased.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_cordz_handle.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_str_format_internal.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_synchronization.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_stacktrace.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_symbolize.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_debugging_internal.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_demangle_internal.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_graphcycles_internal.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_malloc_internal.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_time.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_strings.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_throw_delegate.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_int128.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_strings_internal.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_base.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_spinlock_wait.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_raw_logging_internal.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_log_severity.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_civil_time.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libabsl_time_zone.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libssl.a
+/Users/zhangxu/D/mapreduce/bin/mr_worker: /usr/local/lib/libcrypto.a
 /Users/zhangxu/D/mapreduce/bin/mr_worker: src/mr_worker/CMakeFiles/mr_worker.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable /Users/zhangxu/D/mapreduce/bin/mr_worker"
 	cd /Users/zhangxu/D/mapreduce/build/src/mr_worker && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mr_worker.dir/link.txt --verbose=$(VERBOSE)

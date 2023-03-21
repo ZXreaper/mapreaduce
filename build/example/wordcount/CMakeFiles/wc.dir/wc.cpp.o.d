@@ -1,6 +1,7 @@
 example/wordcount/CMakeFiles/wc.dir/wc.cpp.o: \
   /Users/zhangxu/D/mapreduce/example/wordcount/wc.cpp \
   /Users/zhangxu/D/mapreduce/example/wordcount/wc.h \
+  /Users/zhangxu/D/mapreduce/src/include/kv.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/string \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__config_site \

@@ -5,24 +5,17 @@
 #ifndef MAPREDUCE_WORKER_H
 #define MAPREDUCE_WORKER_H
 
+#include "kv.hpp"
 #include "master.h"
-#include "mrrpcfunction.grpc.pb.h"
 #include <functional>
 #include <grpcpp/grpcpp.h>
 #include <string>
 #include <vector>
 
-using mrrpc;
+using namespace mrrpc;
 using grpc::Channel;
 using grpc::ClientContext;
 using grpc::Status;
-
-struct KeyValue {
-  std::string Key;
-  std::string Value;
-};
-
-typedef std::vector<KeyValue> KeyValues;
 
 class Worker {
 public:
@@ -37,7 +30,7 @@ public:
   // g++ -c wc.cpp         ->   生成wc.o
   // ar -crv libwc.a wc.o  ->   生成libwc.a
   // 编译文件时，g++ xxx.cpp -L./ -lwc -o xxx
-  void LoadPlugin();
+  // void LoadPlugin();
 
   // 启动worker端
   void StartWorker();
@@ -61,9 +54,9 @@ public:
   void TaskCompleted(Task &task);
 
 private:
-  std::function<KeyValues(std::string, std::string)> mapf_; // map function
-  std::function<std::string(std::string, std::vector<std::string>)>
-      reducef_; // reduce function
+  // std::function<KeyValues(std::string, std::string)> mapf_; // map function
+  // std::function<std::string(std::string, std::vector<std::string>)>
+  //     reducef_; // reduce function
   std::unique_ptr<mrrpc::RpcAssignTask::Stub> stub_;
 };
 

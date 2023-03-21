@@ -1,2 +1,0 @@
-/usr/bin/ar qc /Users/zhangxu/D/mapreduce/lib/libmapreduce_worker.a CMakeFiles/mapreduce_worker.dir/mr_worker.cpp.o CMakeFiles/mapreduce_worker.dir/worker.cpp.o
-/usr/bin/ranlib /Users/zhangxu/D/mapreduce/lib/libmapreduce_worker.a

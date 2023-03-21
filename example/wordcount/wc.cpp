@@ -5,9 +5,9 @@
 #include <iostream>
 #include <string>
 
-std::vector<KeyValue> MapReduce::Map(std::string filename,
+KeyValues MapReduce::Map(std::string filename,
                                      std::string contents) {
-  std::vector<KeyValue> kvs;
+  KeyValues kvs;
   // 按照空格进行分割单词
   int len = contents.size();
   int i = 0, j = 0;

@@ -3,11 +3,9 @@
 /Users/zhangxu/D/mapreduce/build/CMakeFiles/rebuild_cache.dir
 /Users/zhangxu/D/mapreduce/build/src/CMakeFiles/edit_cache.dir
 /Users/zhangxu/D/mapreduce/build/src/CMakeFiles/rebuild_cache.dir
-/Users/zhangxu/D/mapreduce/build/src/mr_master/CMakeFiles/mapreduce_master.dir
 /Users/zhangxu/D/mapreduce/build/src/mr_master/CMakeFiles/mr_master.dir
 /Users/zhangxu/D/mapreduce/build/src/mr_master/CMakeFiles/edit_cache.dir
 /Users/zhangxu/D/mapreduce/build/src/mr_master/CMakeFiles/rebuild_cache.dir
-/Users/zhangxu/D/mapreduce/build/src/mr_worker/CMakeFiles/mapreduce_worker.dir
 /Users/zhangxu/D/mapreduce/build/src/mr_worker/CMakeFiles/mr_worker.dir
 /Users/zhangxu/D/mapreduce/build/src/mr_worker/CMakeFiles/edit_cache.dir
 /Users/zhangxu/D/mapreduce/build/src/mr_worker/CMakeFiles/rebuild_cache.dir

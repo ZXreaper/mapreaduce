@@ -8,6 +8,7 @@
 Status RpcServiceImpl::AssignTask(ServerContext *context,
                                   const ::mrrpc::AssignTaskRequest *request,
                                   ::mrrpc::RPCTask *response) {
+  // request->set_assign_arg("");
   m_->AssignTask(response);
   return Status::OK;
 }

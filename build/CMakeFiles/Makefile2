@@ -119,7 +119,6 @@ src/clean: src/rpc/clean
 # Directory level rules for directory src/mr_master
 
 # Recursive "all" directory target.
-src/mr_master/all: src/mr_master/CMakeFiles/mapreduce_master.dir/all
 src/mr_master/all: src/mr_master/CMakeFiles/mr_master.dir/all
 .PHONY : src/mr_master/all
 
@@ -128,7 +127,6 @@ src/mr_master/preinstall:
 .PHONY : src/mr_master/preinstall
 
 # Recursive "clean" directory target.
-src/mr_master/clean: src/mr_master/CMakeFiles/mapreduce_master.dir/clean
 src/mr_master/clean: src/mr_master/CMakeFiles/mr_master.dir/clean
 .PHONY : src/mr_master/clean
 
@@ -136,7 +134,6 @@ src/mr_master/clean: src/mr_master/CMakeFiles/mr_master.dir/clean
 # Directory level rules for directory src/mr_worker
 
 # Recursive "all" directory target.
-src/mr_worker/all: src/mr_worker/CMakeFiles/mapreduce_worker.dir/all
 src/mr_worker/all: src/mr_worker/CMakeFiles/mr_worker.dir/all
 .PHONY : src/mr_worker/all
 
@@ -145,7 +142,6 @@ src/mr_worker/preinstall:
 .PHONY : src/mr_worker/preinstall
 
 # Recursive "clean" directory target.
-src/mr_worker/clean: src/mr_worker/CMakeFiles/mapreduce_worker.dir/clean
 src/mr_worker/clean: src/mr_worker/CMakeFiles/mr_worker.dir/clean
 .PHONY : src/mr_worker/clean
 
@@ -171,7 +167,7 @@ src/rpc/clean: src/rpc/CMakeFiles/mrrpc.dir/clean
 CMakeFiles/mr_grpc_proto.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mr_grpc_proto.dir/build.make CMakeFiles/mr_grpc_proto.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mr_grpc_proto.dir/build.make CMakeFiles/mr_grpc_proto.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=8,9,10 "Built target mr_grpc_proto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=1,2,3 "Built target mr_grpc_proto"
 .PHONY : CMakeFiles/mr_grpc_proto.dir/all
 
 # Build rule for subdir invocation for target.
@@ -191,45 +187,19 @@ CMakeFiles/mr_grpc_proto.dir/clean:
 .PHONY : CMakeFiles/mr_grpc_proto.dir/clean
 
 #=============================================================================
-# Target rules for target src/mr_master/CMakeFiles/mapreduce_master.dir
-
-# All Build rule for target.
-src/mr_master/CMakeFiles/mapreduce_master.dir/all: CMakeFiles/mr_grpc_proto.dir/all
-src/mr_master/CMakeFiles/mapreduce_master.dir/all: src/rpc/CMakeFiles/mrrpc.dir/all
-	$(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/depend
-	$(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=1,2,3,4 "Built target mapreduce_master"
-.PHONY : src/mr_master/CMakeFiles/mapreduce_master.dir/all
-
-# Build rule for subdir invocation for target.
-src/mr_master/CMakeFiles/mapreduce_master.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/zhangxu/D/mapreduce/build/CMakeFiles 10
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/mr_master/CMakeFiles/mapreduce_master.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/zhangxu/D/mapreduce/build/CMakeFiles 0
-.PHONY : src/mr_master/CMakeFiles/mapreduce_master.dir/rule
-
-# Convenience name for target.
-mapreduce_master: src/mr_master/CMakeFiles/mapreduce_master.dir/rule
-.PHONY : mapreduce_master
-
-# clean rule for target.
-src/mr_master/CMakeFiles/mapreduce_master.dir/clean:
-	$(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mapreduce_master.dir/build.make src/mr_master/CMakeFiles/mapreduce_master.dir/clean
-.PHONY : src/mr_master/CMakeFiles/mapreduce_master.dir/clean
-
-#=============================================================================
 # Target rules for target src/mr_master/CMakeFiles/mr_master.dir
 
 # All Build rule for target.
-src/mr_master/CMakeFiles/mr_master.dir/all:
+src/mr_master/CMakeFiles/mr_master.dir/all: CMakeFiles/mr_grpc_proto.dir/all
+src/mr_master/CMakeFiles/mr_master.dir/all: src/rpc/CMakeFiles/mrrpc.dir/all
 	$(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mr_master.dir/build.make src/mr_master/CMakeFiles/mr_master.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/mr_master/CMakeFiles/mr_master.dir/build.make src/mr_master/CMakeFiles/mr_master.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=11,12,13,14 "Built target mr_master"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=4,5,6,7 "Built target mr_master"
 .PHONY : src/mr_master/CMakeFiles/mr_master.dir/all
 
 # Build rule for subdir invocation for target.
 src/mr_master/CMakeFiles/mr_master.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/zhangxu/D/mapreduce/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/zhangxu/D/mapreduce/build/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/mr_master/CMakeFiles/mr_master.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/zhangxu/D/mapreduce/build/CMakeFiles 0
 .PHONY : src/mr_master/CMakeFiles/mr_master.dir/rule
@@ -244,45 +214,20 @@ src/mr_master/CMakeFiles/mr_master.dir/clean:
 .PHONY : src/mr_master/CMakeFiles/mr_master.dir/clean
 
 #=============================================================================
-# Target rules for target src/mr_worker/CMakeFiles/mapreduce_worker.dir
-
-# All Build rule for target.
-src/mr_worker/CMakeFiles/mapreduce_worker.dir/all: CMakeFiles/mr_grpc_proto.dir/all
-src/mr_worker/CMakeFiles/mapreduce_worker.dir/all: src/rpc/CMakeFiles/mrrpc.dir/all
-	$(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mapreduce_worker.dir/build.make src/mr_worker/CMakeFiles/mapreduce_worker.dir/depend
-	$(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mapreduce_worker.dir/build.make src/mr_worker/CMakeFiles/mapreduce_worker.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=5,6,7 "Built target mapreduce_worker"
-.PHONY : src/mr_worker/CMakeFiles/mapreduce_worker.dir/all
-
-# Build rule for subdir invocation for target.
-src/mr_worker/CMakeFiles/mapreduce_worker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/zhangxu/D/mapreduce/build/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/mr_worker/CMakeFiles/mapreduce_worker.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/zhangxu/D/mapreduce/build/CMakeFiles 0
-.PHONY : src/mr_worker/CMakeFiles/mapreduce_worker.dir/rule
-
-# Convenience name for target.
-mapreduce_worker: src/mr_worker/CMakeFiles/mapreduce_worker.dir/rule
-.PHONY : mapreduce_worker
-
-# clean rule for target.
-src/mr_worker/CMakeFiles/mapreduce_worker.dir/clean:
-	$(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mapreduce_worker.dir/build.make src/mr_worker/CMakeFiles/mapreduce_worker.dir/clean
-.PHONY : src/mr_worker/CMakeFiles/mapreduce_worker.dir/clean
-
-#=============================================================================
 # Target rules for target src/mr_worker/CMakeFiles/mr_worker.dir
 
 # All Build rule for target.
-src/mr_worker/CMakeFiles/mr_worker.dir/all:
+src/mr_worker/CMakeFiles/mr_worker.dir/all: CMakeFiles/mr_grpc_proto.dir/all
+src/mr_worker/CMakeFiles/mr_worker.dir/all: src/rpc/CMakeFiles/mrrpc.dir/all
+src/mr_worker/CMakeFiles/mr_worker.dir/all: example/wordcount/CMakeFiles/wc.dir/all
 	$(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mr_worker.dir/build.make src/mr_worker/CMakeFiles/mr_worker.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/mr_worker/CMakeFiles/mr_worker.dir/build.make src/mr_worker/CMakeFiles/mr_worker.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=15,16,17 "Built target mr_worker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=8,9,10 "Built target mr_worker"
 .PHONY : src/mr_worker/CMakeFiles/mr_worker.dir/all
 
 # Build rule for subdir invocation for target.
 src/mr_worker/CMakeFiles/mr_worker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/zhangxu/D/mapreduce/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/zhangxu/D/mapreduce/build/CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/mr_worker/CMakeFiles/mr_worker.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/zhangxu/D/mapreduce/build/CMakeFiles 0
 .PHONY : src/mr_worker/CMakeFiles/mr_worker.dir/rule
@@ -303,7 +248,7 @@ src/mr_worker/CMakeFiles/mr_worker.dir/clean:
 src/rpc/CMakeFiles/mrrpc.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/rpc/CMakeFiles/mrrpc.dir/build.make src/rpc/CMakeFiles/mrrpc.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/rpc/CMakeFiles/mrrpc.dir/build.make src/rpc/CMakeFiles/mrrpc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=18,19,20 "Built target mrrpc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=11,12,13 "Built target mrrpc"
 .PHONY : src/rpc/CMakeFiles/mrrpc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -329,7 +274,7 @@ src/rpc/CMakeFiles/mrrpc.dir/clean:
 example/wordcount/CMakeFiles/wc.dir/all:
 	$(MAKE) $(MAKESILENT) -f example/wordcount/CMakeFiles/wc.dir/build.make example/wordcount/CMakeFiles/wc.dir/depend
 	$(MAKE) $(MAKESILENT) -f example/wordcount/CMakeFiles/wc.dir/build.make example/wordcount/CMakeFiles/wc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=21,22 "Built target wc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/zhangxu/D/mapreduce/build/CMakeFiles --progress-num=14,15 "Built target wc"
 .PHONY : example/wordcount/CMakeFiles/wc.dir/all
 
 # Build rule for subdir invocation for target.
