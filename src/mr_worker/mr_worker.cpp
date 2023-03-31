@@ -5,10 +5,10 @@
 #include <iostream>
 
 int main(int argc, char **argv) {
-  if (argc != 2) {
-    std::cout << "Usage: mr_worker xxx.so" << std::endl;
-    exit(EXIT_FAILURE);
-  }
+  // if (argc != 2) {
+  //   std::cout << "Usage: mr_worker xxx.so" << std::endl;
+  //   exit(EXIT_FAILURE);
+  // }
 
   std::string target_str = "127.0.0.1:50051";
 
@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
 
   // 获取map和reduce方法
   // worker.LoadPlugin();
-
+  
   // worker启动
   worker.StartWorker();
 

@@ -11,7 +11,7 @@ Master::Master(STATE MasterPhrase, int nreduce,
   InputFiles_ = inputfiles;
   int files_cnt = inputfiles.size();
   for (int i = 0; i < files_cnt; i++) {
-    Intermediates_[i] = std::vector<std::string>();
+    Intermediates_.push_back(std::vector<std::string>());
   }
 }
 
@@ -26,9 +26,6 @@ std::shared_ptr<Master> Master::MakeMaster(std::vector<std::string> files,
 
   // 启动master服务
   m->StartServer();
-
-  // 开始Reduce阶段
-  m->createReduceTask();
 
   // 启动一个线程检查超时任务
   m->CatchTimeOut();
@@ -53,11 +50,12 @@ bool Master::AssignTask(::mrrpc::RPCTask *response) {
   } else {
     response->set_task_state(WAIT);
   }
+  std::cout << "AssignTask unlock" << std::endl;
   return true;
 }
 
 // Master启动：开启rpc监听，server->Wait()会阻塞住，因此我们要开启一个线程来做监听
-bool Master::StartServer() {
+void Master::StartServer() {
   std::thread rpc_server([&]() {
     std::string server_address("127.0.0.1:50051");
     RpcServiceImpl service;
@@ -79,13 +77,15 @@ bool Master::StartServer() {
     // responsible for shutting down the server for this call to ever return.
     // Block until the server shuts down.
     server->Wait();
+    // std::cout << "!!!" << std::endl;
   });
 
   rpc_server.detach();
+  // std::cout << "?????" << std::endl;
 }
 
 // Map过程
-bool Master::createMapTask() {
+void Master::createMapTask() {
   // 根据传入的filename，每个文件对应一个map task
   int len = InputFiles_.size();
   // map任务加入队列阶段应该不需要互斥锁
@@ -100,14 +100,29 @@ bool Master::createMapTask() {
 }
 
 // Reduce过程
-bool Master::createReduceTask() {}
+void Master::createReduceTask() {
+  // 进入reduce阶段后，TaskMeta_需要清空，重新为当前的任务设置状态
+  TaskMeta_.clear();
+  int file_cnt = Intermediates_.size();
+  for(int i = 0; i<file_cnt; i++) {
+    std::shared_ptr<Task> task(new Task());
+    task->TaskState_ = REDUCE;
+    task->NReducer_ = NReduce_;
+    task->TaskNumber_ = i;
+    task->Intermediates_ = Intermediates_[i];
+    Task_que_.push(task);
+    TaskMeta_[i] = std::make_shared<MasterTask> (IDLE, 0, task);
+  }
+}
 
 // 判断任务是否完全结束
 bool Master::Done() {
   // TODO: 搞清楚函数结束前释放锁和函数结束后释放锁的区别。
   // TODO: 这个位置为什么要加锁
+  std::cout << "Master::Done lock" << std::endl;
   std::lock_guard<std::mutex> g(mtx_);
   bool ans = (MasterPhrase_ == EXIT);
+  std::cout << "Master::Done unlock" << std::endl;
   return ans;
 }
 
@@ -116,21 +131,26 @@ bool Master::Done() {
 // 创建ReduceTask,转入ReduceTask，转入Reduce阶段
 // 如果所有的ReduceTask都已经完成，转入Exit阶段
 bool Master::TaskCompleted(const ::mrrpc::RPCTask *request) {
+  std::cout << "TaskCompleted lock" << std::endl;
   mtx_.lock();
+  std::cout << "Master recived task result" << std::endl;
   int task_no = request->task_no();
   int task_state = request->task_state();
-  if (task_state != MasterPhrase_ ||
-      TaskMeta_[task_no]->TaskStatus_ == Completed) {
+  if (task_state != MasterPhrase_ || TaskMeta_[task_no]->TaskStatus_ == Completed) {
     // 因为worker写在同一个文件磁盘上，对于重复的结果要丢弃
+    mtx_.unlock();   // 记得释放锁
     return true;
   }
   TaskMeta_[task_no]->TaskStatus_ = Completed;
   mtx_.unlock();
+  std::cout << "TaskCompleted unlock" << std::endl;
   return true;
 }
 
 // 任务结束后调用
 void Master::ProcessTaskResult(const ::mrrpc::RPCTask *request) {
+  std::cout << "process task result!" << std::endl;
+  std::cout << "ProcessTaskResult lock" << std::endl;
   std::lock_guard<std::mutex> g(mtx_);
   int task_state = request->task_state();
   switch (task_state) {
@@ -155,6 +175,7 @@ void Master::ProcessTaskResult(const ::mrrpc::RPCTask *request) {
     break;
   }
   }
+  std::cout << "ProcessTaskResult unlock" << std::endl;
 }
 
 // 判断任务是否都已完成
@@ -168,11 +189,10 @@ bool Master::AllTaskDone() {
 }
 
 // 超时任务判断
-bool Master::CatchTimeOut() {
+void Master::CatchTimeOut() {
   std::thread catchtimeoutTask([&]() {
 
   });
 
-  // 设置分离线程，守护线程
   catchtimeoutTask.detach();
 }

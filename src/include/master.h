@@ -32,6 +32,12 @@ public:
 };
 
 struct MasterTask {
+  MasterTask() {}
+  MasterTask(TASK_STATUS task_status, time_t time, std::shared_ptr<Task> taskref) 
+  : TaskStatus_(task_status)
+  , StartTime_(time)
+  , TaskRef_(taskref)
+  {}
   TASK_STATUS TaskStatus_; // 任务当前的状态：是空闲、在进行、完成
   time_t StartTime_;       // 任务启动的时间
   std::shared_ptr<Task> TaskRef_; // 任务的引用
@@ -48,13 +54,13 @@ public:
   bool AssignTask(::mrrpc::RPCTask *response);
 
   // Master启动
-  bool StartServer();
+  void StartServer();
 
   // Map过程
-  bool createMapTask();
+  void createMapTask();
 
   // Reduce过程
-  bool createReduceTask();
+  void createReduceTask();
 
   // 判断任务是否完全结束
   bool Done();
@@ -69,7 +75,7 @@ public:
   bool AllTaskDone();
 
   // 超时任务判断
-  bool CatchTimeOut();
+  void CatchTimeOut();
 
 private:
   std::queue<std::shared_ptr<Task>> Task_que_; // 任务队列

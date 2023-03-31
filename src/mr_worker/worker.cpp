@@ -193,9 +193,11 @@ std::string Worker::WriteToLocalFile(int x, int y, KeyValues &kvs) {
   // 创建文件夹
   std::string dir = std::string(file_path) + "/mr-tmp";
   // 创建文件夹
-  if (!std::filesystem::create_directory(dir)) {
-    std::cout << "create directories failed!" << std::endl;
-    return "";
+  if(!std::filesystem::exists(dir)) {
+    if (!std::filesystem::create_directory(dir)) {
+      std::cout << "create directories failed!" << std::endl;
+      return "";
+    }
   }
   // json序列化
   json js;
@@ -240,6 +242,7 @@ KeyValues Worker::ReadFromLocalFile(std::vector<std::string> files) {
 
 // worker任务完成后通知master。rpc方法
 void Worker::TaskCompleted(Task &task) {
+  std::cout << task.TaskNumber_ << " completed!" << std::endl;
   mrrpc::RPCTask args;
   mrrpc::TaskCompletedReply reply;
   args.set_inputs(task.Input_);
@@ -249,5 +252,7 @@ void Worker::TaskCompleted(Task &task) {
     args.mutable_intermediates(i)->AppendToString(&task.Intermediates_[i]);
   }
   ClientContext context;
+  std::cout << "live" << std::endl;
   Status status = stub_->TaskCompleted(&context, args, &reply);
+  std::cout << "recived master reply!" << std::endl;
 }
