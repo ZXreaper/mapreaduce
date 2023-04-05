@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
   }
 
   // 创建master
-  std::shared_ptr<Master> m = Master::MakeMaster(files, 10);
+  std::shared_ptr<Master> m = Master::MakeMaster(files, 1);
 
   // 结束后通知
   while (m->Done() == false) {

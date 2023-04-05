@@ -39,10 +39,19 @@ bool Master::AssignTask(::mrrpc::RPCTask *response) {
   if (!Task_que_.empty()) {
     std::shared_ptr<Task> cur_task = Task_que_.front();
     Task_que_.pop();
+    std::cout << "cur task state : " << cur_task->TaskState_ << std::endl;
     response->set_inputs(cur_task->Input_);
     response->set_nreducer(cur_task->NReducer_);
     response->set_task_state(cur_task->TaskState_);
     response->set_task_no(cur_task->TaskNumber_);
+    int interm_size = cur_task->Intermediates_.size();
+    std::cout << "Master::AssignTask intermediates(org) size : " << response->intermediates_size() << std::endl;
+    for(int i = 0; i<interm_size; i++) {
+      ::mrrpc::keyvalue* kv = response->add_intermediates();
+      // kv->AppendToString(&cur_task->Intermediates_[i]);
+      kv->set_key_value_pair(cur_task->Intermediates_[i]);
+    }
+    std::cout << "Master::AssignTask intermediates size : " << response->intermediates_size() << std::endl;
     TaskMeta_[cur_task->TaskNumber_]->TaskStatus_ = IN_PROGRESS;
     TaskMeta_[cur_task->TaskNumber_]->StartTime_ = time(0);
   } else if (MasterPhrase_ == EXIT) {
@@ -50,7 +59,7 @@ bool Master::AssignTask(::mrrpc::RPCTask *response) {
   } else {
     response->set_task_state(WAIT);
   }
-  std::cout << "AssignTask unlock" << std::endl;
+  // std::cout << "AssignTask unlock" << std::endl;
   return true;
 }
 
@@ -102,14 +111,18 @@ void Master::createMapTask() {
 // Reduce过程
 void Master::createReduceTask() {
   // 进入reduce阶段后，TaskMeta_需要清空，重新为当前的任务设置状态
+  std::cout << "Master::creatReduceTask !" << std::endl;
   TaskMeta_.clear();
   int file_cnt = Intermediates_.size();
+  std::cout << "file_cnt : " << file_cnt << std::endl;
   for(int i = 0; i<file_cnt; i++) {
     std::shared_ptr<Task> task(new Task());
     task->TaskState_ = REDUCE;
     task->NReducer_ = NReduce_;
     task->TaskNumber_ = i;
     task->Intermediates_ = Intermediates_[i];
+    std::cout << "Master::createReduceTask task intermediates_(org) size : " << Intermediates_[i].size() << std::endl;
+    std::cout << "Master::createReduceTask task intermediates_ size : " << task->Intermediates_.size() << std::endl;
     Task_que_.push(task);
     TaskMeta_[i] = std::make_shared<MasterTask> (IDLE, 0, task);
   }
@@ -119,10 +132,10 @@ void Master::createReduceTask() {
 bool Master::Done() {
   // TODO: 搞清楚函数结束前释放锁和函数结束后释放锁的区别。
   // TODO: 这个位置为什么要加锁
-  std::cout << "Master::Done lock" << std::endl;
+  // std::cout << "Master::Done lock" << std::endl;
   std::lock_guard<std::mutex> g(mtx_);
   bool ans = (MasterPhrase_ == EXIT);
-  std::cout << "Master::Done unlock" << std::endl;
+  // std::cout << "Master::Done unlock" << std::endl;
   return ans;
 }
 
@@ -131,11 +144,14 @@ bool Master::Done() {
 // 创建ReduceTask,转入ReduceTask，转入Reduce阶段
 // 如果所有的ReduceTask都已经完成，转入Exit阶段
 bool Master::TaskCompleted(const ::mrrpc::RPCTask *request) {
-  std::cout << "TaskCompleted lock" << std::endl;
+  // std::cout << "TaskCompleted lock" << std::endl;
   mtx_.lock();
-  std::cout << "Master recived task result" << std::endl;
+  // std::cout << "Master recived task result" << std::endl;
   int task_no = request->task_no();
   int task_state = request->task_state();
+  std::cout << "TaskCompleted : " << std::endl;
+  std::cout << "----- task state : " << task_state << std::endl;
+  std::cout << "----- Master Phrase : " << MasterPhrase_ << std::endl;
   if (task_state != MasterPhrase_ || TaskMeta_[task_no]->TaskStatus_ == Completed) {
     // 因为worker写在同一个文件磁盘上，对于重复的结果要丢弃
     mtx_.unlock();   // 记得释放锁
@@ -143,7 +159,7 @@ bool Master::TaskCompleted(const ::mrrpc::RPCTask *request) {
   }
   TaskMeta_[task_no]->TaskStatus_ = Completed;
   mtx_.unlock();
-  std::cout << "TaskCompleted unlock" << std::endl;
+  // std::cout << "TaskCompleted unlock" << std::endl;
   return true;
 }
 
@@ -157,11 +173,15 @@ void Master::ProcessTaskResult(const ::mrrpc::RPCTask *request) {
   case MAP: {
     // 收集intermediate信息
     int intermediates_size = request->intermediates_size();
+    std::cout << "Master::ProcessTaskResult : " << std::endl;
     for (int i = 0; i < intermediates_size; i++) {
       Intermediates_[i].push_back(request->intermediates(i).key_value_pair());
+      std::cout << "-----intermidiates : " << request->intermediates(i).key_value_pair() << std::endl;
     }
+    std::cout << "Master::ProcessTaskResult Intermediates_ size : " << Intermediates_.size() << std::endl;
     if (AllTaskDone()) {
       // 获得所有map task后，进入reduce阶段
+      std::cout << "MAP tasks have already done!" << std::endl;
       createReduceTask();
       MasterPhrase_ = REDUCE;
     }
@@ -170,6 +190,7 @@ void Master::ProcessTaskResult(const ::mrrpc::RPCTask *request) {
   case REDUCE: {
     if (AllTaskDone()) {
       // 获得所有reduce task后，进入exit阶段
+      std::cout << "REDUCE tasks have already done!" << std::endl;
       MasterPhrase_ = EXIT;
     }
     break;

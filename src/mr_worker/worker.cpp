@@ -25,6 +25,7 @@ void Worker::StartWorker() {
   while (1) {
     // 从master获取任务
     Task task = GetTask();
+    std::cout << "Worker::GetTask !" << std::endl;
 
     // 拿到task之后，根据task的state来判断
     // state = map：交给mapper
@@ -74,6 +75,11 @@ Task Worker::GetTask() {
     }
     int nreduce = reply.nreducer();
     Task task = Task(inputs, nreduce, task_no, state);
+    int interm_size = reply.intermediates_size();
+    std::cout << "Worker::GetTask reply intermediates size : " << interm_size << std::endl;
+    for(int i = 0; i<interm_size; i++) {
+      task.Intermediates_.push_back(reply.intermediates(i).key_value_pair());
+    }
     return task;
   } else {
     std::cout << status.error_code() << ": " << status.error_message()
@@ -147,11 +153,16 @@ void Worker::Mapper(Task &task) {
     mapOutput.push_back(outfilepath);
   }
   task.Intermediates_ = mapOutput;
+  std::cout << "Worker::Mapper Intermediates size : " << task.Intermediates_.size() << std::endl;
+  std::cout << "Worker::Mapper mapoutput : " << task.Intermediates_[0] << std::endl;
   TaskCompleted(task);
 }
 
 // worker获得ReduceTask，交给reducer处理
 void Worker::Reducer(Task &task) {
+  std::cout << "Worker::Reducer !" << std::endl;
+  std::cout << "Worker::Reducer task state : " << task.TaskState_ << std::endl;
+  std::cout << "Worker::Reducer task Intermediates : " << task.Intermediates_.size() << std::endl;
   KeyValues intermediate = ReadFromLocalFile(task.Intermediates_);
   std::sort(intermediate.begin(), intermediate.end(),
             [&](KeyValue a, KeyValue b) -> bool { return a.Key < b.Key; });
@@ -167,6 +178,7 @@ void Worker::Reducer(Task &task) {
 
   // 将相同的key放在一起并分组合并
   int i = 0, j = i + 1;
+  std::cout << "Worker::Reducer intermediate size : " << intermediate.size() << std::endl;
   while (i < intermediate.size()) {
     while (j < intermediate.size() &&
            (intermediate[i].Key == intermediate[j].Key))
@@ -178,6 +190,7 @@ void Worker::Reducer(Task &task) {
     // 交给reducef，拿到结果
     // std::string output = reducef_(intermediate[i].Key, values);
     std::string output = MapReduce::Reduce(intermediate[i].Key, values);
+    // std::cout << output << std::endl;
     out << (intermediate[i].Key + " " + output + "\n");
     i = j;
   }
@@ -247,12 +260,16 @@ void Worker::TaskCompleted(Task &task) {
   mrrpc::TaskCompletedReply reply;
   args.set_inputs(task.Input_);
   args.set_outputs(task.Output_);
-  int intermediates_size = args.intermediates_size();
+  args.set_task_state(task.TaskState_);
+  int intermediates_size = task.Intermediates_.size();
   for (int i = 0; i < intermediates_size; i++) {
-    args.mutable_intermediates(i)->AppendToString(&task.Intermediates_[i]);
+    ::mrrpc::keyvalue* kv = args.add_intermediates();
+    std::cout << "Worker::TaskCompleted task Intermediates_ : " << task.Intermediates_[i] << std::endl;
+    kv->set_key_value_pair(task.Intermediates_[i]);
   }
   ClientContext context;
-  std::cout << "live" << std::endl;
+  std::cout << "Worker::TaskCompleted intermidiates size : " << args.intermediates_size() << std::endl;
+  std::cout << "Worker::TaskCompleted intermidiates : " << args.intermediates(0).key_value_pair() << std::endl;
   Status status = stub_->TaskCompleted(&context, args, &reply);
   std::cout << "recived master reply!" << std::endl;
 }

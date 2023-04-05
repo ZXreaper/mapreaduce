@@ -17,6 +17,7 @@ Status RpcServiceImpl::AssignTask(ServerContext *context,
 Status RpcServiceImpl::TaskCompleted(ServerContext *context,
                                      const ::mrrpc::RPCTask *request,
                                      ::mrrpc::TaskCompletedReply *response) {
+  std::cout << "RpcServiceImpl::TaskCompleted request : " << request->intermediates(0).key_value_pair() << std::endl;
   m_->TaskCompleted(request);
   m_->ProcessTaskResult(request);
   return Status::OK;
